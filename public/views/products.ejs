@@ -1,0 +1,33 @@
+<%- include('partials/head')%>
+<body>
+    <nav class="navbar bg-dark blueShadow">
+        <div class="container-fluid">
+            <div class="d-flex ms-2 txtBlue "navbar-brand"">
+            <a class="navbar-brand" href="/">
+                <img src=<%= avatar %> alt="avatar img" width="30" height="24" class="d-inline-block avatar align-text-top">
+            </a>
+            <div>
+                <p class="mb-0"><%= name %></p> 
+                <p class="m-0"><%= email %></p> 
+            </div>
+        </div>
+        <button type="button" onclick="showCart()" class="btn btn-info ms-auto me-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Carrito
+        </button>
+        <a href="/logout" class="btn btn-primary">LogOut</a>
+        </div>
+    </nav>
+    <div id="home"class="container-fluid p-2">
+        <div class="container d-flex flex-wrap justify-content-around p-2 py-5">
+            <% if(products) { %>
+                <% products.forEach(function(p){ %>
+                    <%- include('partials/card', {p:p}) %>
+                <% }) %>
+            <%}%>
+        </div>
+        <%- include('partials/cart');%>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="../scripts/index.js"></script>
+</body>
+</html>

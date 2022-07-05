@@ -1,0 +1,12 @@
+<div class="card mb-5 mx-3" >
+    <img src=<%= p.image %> class="card-img-top" alt="Prod Image">
+    <div class="card-body">
+      <h5 class="card-title"><%= p.name %></h5>
+      <p class="card-text mb-1 text-center"><%= p.description %><br><b>$<%= p.price %></b></p>
+      <% if(p.stock > 0) {%> 
+        <a id="btnAdd"  class="btn btn-primary" onclick="addToCart('<%= p.id %>')">agregar</a>
+        <% }else{ %>
+          <a id="btnAdd"  class="btn btn-outline-danger" disabled>agotado</a>
+        <% } %> 
+    </div>
+</div>

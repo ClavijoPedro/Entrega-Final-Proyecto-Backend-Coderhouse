@@ -1,0 +1,201 @@
+body{
+    background-color: black;
+}
+
+.hide{
+    display: none;
+}
+.bg-dark{
+    background-color: black !important;
+}
+
+.worker{
+    width: 200px;
+}
+.tblImg{
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+form{
+ width: 40%;
+ box-shadow: 0px 0px 10px 4px rgba(0,184,240,0.9);
+}
+
+.form{
+    box-shadow: 0px 0px 10px 4px rgba(0,184,240,0.9);
+}
+
+.regform{
+    border-radius: 1rem;
+    padding:5rem 8rem;
+}
+
+
+/* Nav */
+
+.blueShadow{
+    box-shadow: 0px 0px 10px 4px rgba(0,184,240,0.9);
+}
+
+.txtBlue{
+    color:aqua !important;
+}
+
+
+
+#mensajes{
+    max-height: 270px;
+    overflow:scroll;
+    scrollbar-width: none;
+}
+
+#mensajes::-webkit-scrollbar{
+    display: none;
+
+}
+.msjData{
+    font-size: 0.8rem;
+    color: brown;
+}
+.msjData b{
+    color:blue;
+}
+.msjText{
+    color: green;
+}
+
+.table{
+    margin: auto;
+    width: 675px;
+    text-align: center;
+}
+
+.titulo{
+    text-align: center;
+    color: aqua;
+    text-shadow: 2px 2px 2px 4px rgba(0,184,240,0.9);
+}
+
+.tabla{
+    box-shadow: 0px 0px 10px 4px rgba(0,184,240,0.9);
+}
+
+
+.input{
+    margin-bottom: 10px;
+}
+
+.avatar{
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.uMsj{
+    position:relative
+}
+
+#compression{
+    text-align: center;
+    font-size: 0.8rem;
+    margin-bottom: 1px;
+    font-weight: 500;
+}
+
+.logOut{
+    width: 100%;
+    background-color: aqua;
+    display: flex;
+    padding: 10px;
+    box-shadow: 0px 0px 10px 4px rgba(0,184,240,0.9);
+    margin-bottom: 100px;
+    
+}
+
+.btnOut{
+    margin-left: auto;
+    
+}
+
+.logOutPage{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.logOutMsj{
+    color:white;
+    box-shadow: 0px 0px 10px 4px rgba(0,184,240,0.9);
+    padding: 55px;
+    width: 100%;
+    text-align: center;
+}
+
+.containerLogIn{
+    height: 100vh;
+    width: 100%;
+    margin-top: 50px;
+
+}
+
+.logingImg{
+    width: 150px;
+}
+
+.formLogIn{
+    padding: 55px;
+    display: flex;
+    justify-content: center;
+    height: 150px;
+    
+}
+
+.logIn{
+    margin-right: 10px;
+    text-align: center;
+}
+
+
+.regIco{
+    width: 100px;
+    margin: 0 0  0 8rem ;
+}
+.tituloLogin{
+    color:aqua;
+    text-align:center;
+    padding: 50px;
+}
+
+.card {
+    width: 12rem;
+    height: 18rem;
+    text-align: center; 
+}
+
+.card-body{
+    max-height: 50% ;
+    font-size: 0.75rem;
+    
+}
+.card-img-top{
+    height: 50%;
+    object-fit: contain;
+    align-content: center;
+    display: block;
+    overflow: hidden;
+}
+
+/* intelinput */
+.iti{
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.file-select::before {
+    content: 'imagen de Perfil' !important;
+  }

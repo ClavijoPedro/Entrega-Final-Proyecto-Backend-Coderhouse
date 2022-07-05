@@ -1,0 +1,16 @@
+<%- include('partials/head')%>
+<body>
+    <div class="logOutPage">
+        <% if(name) { %>
+            <h2 class="logOutMsj"> <%= name %> tu sesión ha finalizado</h2>
+        <% } else { %>
+            <h2 class="logOutMsj">tu sesión ha finalizado</h2>
+        <% } %> 
+    </div>
+    <script>
+        setTimeout(()=>{
+            window.location.href ='/'
+        },2000)
+    </script>
+</body>
+</html>

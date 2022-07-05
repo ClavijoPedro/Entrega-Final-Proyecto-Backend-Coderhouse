@@ -1,0 +1,26 @@
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <h5 class="modal-title" id="staticBackdropLabel">Carrito</h5>
+            <table>
+              <tr>
+                <td><%= name %></td>
+                <td><%= email %></td>
+              </tr>
+            </table>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="cartBody">
+          <%- include('cartTable') %> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btnConfirm" class="btn btn-primary d-none " onclick="sendOrder()" >Confirmar</button>
+          <button type="button" id="btnDelCart" onclick="deleteCart()" class="btn btn-primary d-none">eliminar carrito</button>
+          <button  class="btn btn-secondary" data-bs-dismiss="modal">cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>

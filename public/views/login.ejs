@@ -1,0 +1,14 @@
+<%- include('partials/head')%>
+</head>
+<body>
+  <div class="containerLogIn">
+  <h3 class="tituloLogin ">Login Usuario</h3>
+    <form action="/login" method="post" class="formLogIn  w-100">
+      <input type="email" name="email" class=" p-0 text-center w-5" class="logIn" placeholder="Email usuario" >
+      <input type="password" name="password" autocomplete="false" class=" p-0 text-center ms-2 w-5" class="logIn" placeholder="Contraseña" >
+      <button id="btnLogin" class="btn btn-primary ms-2">LogIn</button>
+      <a href='/register' class="btn btn-primary ms-2">SingUp</a>
+    </form>
+  </div>
+</body>
+</html>
