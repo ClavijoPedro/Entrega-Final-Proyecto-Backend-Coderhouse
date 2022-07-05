@@ -13,6 +13,15 @@ dotenv.config()
 //*==================================[]======================================*//
 
 export default{
+    EXPRESS_SESSION: {
+        secret:process.env.PRIVATE__KEY,
+        saveUninitialized: false,
+        rolling:true,
+        resave: true,
+        cookie: {
+            maxAge: 600000
+        }
+    },
     NODE_ENV: process.env.NODE__ENV,
     DB_CLIENT:process.env.DB__CLIENT || 'filedb',
     MONGO_URI: process.env.MONGO_DB_URI,
@@ -31,7 +40,4 @@ export default{
     //VARIABLES GLOBALES PARA ENVIO DE EMAIL Y WHATSAP A ADMIN
     ADMIN_EMAIL:process.env.ADMIN__EMAIL,
     ADMIN_PHONE:process.env.ADMIN__PHONE,
- 
 }
-
-

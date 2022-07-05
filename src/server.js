@@ -1,8 +1,6 @@
 import express from 'express';
 import config from './config/config.js';
 import logger from './utils/logger.js'; 
-import { cpus } from 'os';
-import cluster from 'cluster';
 import cors from 'cors'
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
@@ -10,85 +8,62 @@ import session from 'express-session';
 import passport from 'passport';
 import path from 'path';
 
-
-
 //ROUTER
-import productosRouter from './routers/productos.js';
-import carritoRouter from './routers/carrito.js';
-import adminRouter from './routers/admin.js'
-import userRouter from './routers/user.js'
-import e404Router from './routers/404.js';
+import serverInfoRouter from './routers/serverInfoRouter.js';
+import productosRouter from './routers/productosRouter.js';
+import carritoRouter from './routers/carritoRouter.js';
+import adminRouter from './routers/adminRouter.js'
+import userRouter from './routers/userRouter.js'
 
+//ERRORS
+import { errorHandler, notMatchHandler } from './middlewares/errorsHandler.js';
 
-
-//INICIALIZO PASSPORT
+//PASSPORT
 import './auth/passport.js'
 
 const app = express();
 
 
-//middlewares JSON, URL y archivos estaticos  
+//JSON, URL y archivos estaticos  
 app.use(express.static(path.join(process.cwd(),'/public')));
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-//motor plantillas
+//TEMPLATES
 app.set('view engine', 'ejs');
+app.set('view engine', 'pug');
 app.set('views', path.join(process.cwd(), 'public/views'));
 
 
-//session
+//SESSION
 app.use(cookieParser());
-app.use(session({
-    secret: config.PRIVATE_KEY,
-    saveUninitialized: false,
-    rolling:true,
-    resave: true,
-    cookie: {
-        maxAge: 600000
-    }
-}));
+app.use(session(config.EXPRESS_SESSION));
 
 
-//Passport
+//PASSPORT
 app.use(passport.initialize());
 app.use(passport.session());
 
 
-
-//middlewares router 
+//ROUTER 
 app.use('/', userRouter);
 app.use('/api/productos', productosRouter);
 app.use('/api/productos', adminRouter);
 app.use('/api/carrito',  carritoRouter);
-app.use(e404Router);
+app.use('/info', serverInfoRouter);
 
 
+//ERRORS
+app.use(notMatchHandler);
+app.use(errorHandler)
 
-//config Clusters && Server  
-const numCPUs = cpus().length;
 
-if(cluster.isPrimary && config.MODO === 'cluster' ){
-    logger.info(`Primary running PORT ${config.PORT} - PID - ${process.pid}`)
-
-    for(let i = 0; i < numCPUs; i++){
-        cluster.fork()
-    }
-
-    cluster.on('exit', (worker, _code, _signal) => {
-        logger.info(`worker ${worker.process.pid} died`)
-        cluster.fork()
-    })
-
-}else{
-
-    const server = app.listen(config.PORT, ()=>{
-        logger.info(`Worker running PORT - ${config.PORT} - PID - ${process.pid}`)
-    });
-    server.on('error', (error) => logger.error(error));
-
-};
+//SERVER
+const server = app.listen(config.PORT, ()=>{
+    logger.info(`SERVER RUNNING - PORT:${config.PORT}`)
+});
+server.on('error', (error) => logger.error(error));
 
 
