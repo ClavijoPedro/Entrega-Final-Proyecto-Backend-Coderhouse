@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
-import config from '../config/config.js';
-import Dao from './Dao.js';
-import logger from '../utils/logger.js';
+import config from '../../config/config.js';
+import Dao from '../Dao.js';
+import logger from '../../utils/logger.js';
 
 
 
@@ -30,36 +30,36 @@ class CartDaoMongoDB extends Dao {
     }
 
 
-    async listAll(){
+    async getAll(){
         try{
-            const items = await this.model.find()
-            return items;
+            const carts = await this.model.find()
+            return carts;
         }
         catch(error){ logger.error(error) }
     }
 
 
-    async listById(id){
+    async getById(id){
         try{
-            const item = await this.model.findById(id);
-            return item;
+            const cart = await this.model.findById(id);
+            return cart;
         }
         catch(error){ logger.error(error) }
     }
 
-    async listOne(itm){
+    async getOne(crt){
         try{
-            const item = await this.model.findOne(itm);
-            return item;
+            const cart = await this.model.findOne(crt);
+            return cart;
         }
         catch(error){ logger.error(error) }
     }
 
 
-    async save(itm){
+    async create(crt){
         try{
-           const item = new this.model(itm); 
-           return await item.save()
+           const cart = new this.model(crt); 
+           return await cart.save()
         }
         catch(error){ logger.error(error) }
     }
@@ -67,8 +67,8 @@ class CartDaoMongoDB extends Dao {
 
     async updateById(id, update){
         try{
-            const udatedItem = await this.model.findByIdAndUpdate(id, update)
-            return udatedItem
+            const updatedcart = await this.model.findByIdAndUpdate(id, update)
+            return updatedcart
         }
         catch(error){ logger.error(error) }
     }
@@ -76,8 +76,8 @@ class CartDaoMongoDB extends Dao {
 
     async deleteById(id){
         try{
-            const deletedItem = await this.model.findByIdAndDelete(id)
-            return deletedItem 
+            const deletedCart = await this.model.findByIdAndDelete(id)
+            return deletedCart 
         }
         catch(error){ logger.error(error) }
     }

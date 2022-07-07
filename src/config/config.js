@@ -1,5 +1,8 @@
 import  dotenv from 'dotenv'
 dotenv.config()
+// dotenv.config({
+//     path: path.resolve(process.cwd(), process.env.NODE_ENV + '.env')
+// });
 //*==================================[NOTA]======================================*//
 
 //PARA FUNCIONALIDAD DE ENVIO DE MAILS Y WHTASAPP DESACTIVAR EVENTUALMENTE EL ANTIVIRUS
@@ -19,11 +22,11 @@ export default{
         rolling:true,
         resave: true,
         cookie: {
-            maxAge: 600000
+            maxAge: 86400000 
         }
     },
     NODE_ENV: process.env.NODE__ENV,
-    DB_CLIENT:process.env.DB__CLIENT || 'filedb',
+    DB_CLIENT:process.env.DB__CLIENT,
     MONGO_URI: process.env.MONGO_DB_URI,
     PORT: process.env.PORT || 3000,
     MODO : process.argv[2],

@@ -16,7 +16,7 @@ const ADMIN__PHONE=config.ADMIN_PHONE;
 //Crea un carrito y devuelve su id
 const createCart = async (req, res) => {    
     try{
-        const cartId = await carrito.save({productos:[]});
+        const cartId = await carrito.create({productos:[]});
         const user = await req.user 
         user.cart_id = cartId //prueba
         res.status(200).send({id:cartId});                    
@@ -30,7 +30,7 @@ const orderCartProudcts = async (req,res) => {
     const {name, email, phone} = await req.user;
 
     try{
-        const cart = await carrito.listById(cart_id);
+        const cart = await carrito.getById(cart_id);
         const cartProducts = cart.productos;
         if(cartProducts.length && req.user){
             
@@ -87,7 +87,7 @@ const deleteCart = async (req, res) => {
 const getCartProducts = async (req, res) => {   
     const { cart_id } = req.params;
     try{
-        const cart = await carrito.listById(cart_id);
+        const cart = await carrito.getById(cart_id);
         res.status(200).send(cart.productos);
     }catch(err){ logger.error(err) }; 
 };
@@ -97,8 +97,8 @@ const getCartProducts = async (req, res) => {
 const sendToCart = async (req, res) => {   
     const { cart_id, id } = req.params;         
     try{
-        const cart = await carrito.listById(cart_id); 
-        const product = await productos.listById(id);
+        const cart = await carrito.getById(cart_id); 
+        const product = await productos.getById(id);
         const isInCart = cart.productos.some(p => p.id == id);
         if(!isInCart){
             cart.productos.push(product);
@@ -113,7 +113,7 @@ const sendToCart = async (req, res) => {
 const removeFromCart = async (req, res) => { 
     const {cart_id, id} = req.params
     try{
-        const cart = await carrito.listById(cart_id);
+        const cart = await carrito.getById(cart_id);
         const products = cart.productos.filter(itm => itm.id != id);  
         cart.productos = products;
         await carrito.updateById(cart_id, cart);   

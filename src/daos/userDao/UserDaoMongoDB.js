@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
-import config from '../config/config.js';
-import Dao from './Dao.js';
-import logger from '../utils/logger.js';
+import config from '../../config/config.js';
+import Dao from '../Dao.js';
+import logger from '../../utils/logger.js';
 
 
 
@@ -30,36 +30,36 @@ class UserDaoMongoDB extends Dao {
     }
 
 
-    async listAll(){
+    async getAll(){
         try{
-            const items = await this.model.find()
-            return items;
+            const users = await this.model.find()
+            return users;
         }
         catch(error){ logger.error(error) }
     }
 
 
-    async listById(id){
+    async getById(id){
         try{
-            const item = await this.model.findById(id);
-            return item;
+            const user = await this.model.findById(id);
+            return user;
         }
         catch(error){ logger.error(error) }
     }
 
-    async listOne(itm){
+    async getOne(usr){
         try{
-            const item = await this.model.findOne(itm);
-            return item;
+            const user = await this.model.findOne(usr);
+            return user;
         }
         catch(error){ logger.error(error) }
     }
 
 
-    async save(itm){
+    async create(usr){
         try{
-           const item = new this.model(itm); 
-           return await item.save()
+           const user = new this.model(usr); 
+           return await user.save()
         }
         catch(error){ logger.error(error) }
     }
@@ -67,8 +67,8 @@ class UserDaoMongoDB extends Dao {
 
     async updateById(id, update){
         try{
-            const udatedItem = await this.model.findByIdAndUpdate(id, update)
-            return udatedItem
+            const updatedUser = await this.model.findByIdAndUpdate(id, update)
+            return updatedUser
         }
         catch(error){ logger.error(error) }
     }
@@ -76,8 +76,8 @@ class UserDaoMongoDB extends Dao {
 
     async deleteById(id){
         try{
-            const deletedItem = await this.model.findByIdAndDelete(id)
-            return deletedItem 
+            const deletedUser = await this.model.findByIdAndDelete(id)
+            return deletedUser 
         }
         catch(error){ logger.error(error) }
     }

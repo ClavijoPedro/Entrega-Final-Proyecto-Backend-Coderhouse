@@ -2,15 +2,15 @@ import logger from '../utils/logger.js';
 
 
 const getInitial = (req,res) => {
-    res.render('index', {title:'home'})
+    res.render('index.ejs', {title:'home'})
 };
 
 const getLogin = (req, res) => {
-    res.render('login', {title:'login'})
+    res.render('login.ejs', {title:'login'})
 }
 
 const getRegister = (req, res) => {
-    res.render('register', {title:'singUp'})
+    res.render('register.ejs', {title:'singUp'})
 }
 
 const uploads = async (req,res) => {
@@ -28,7 +28,7 @@ const uploads = async (req,res) => {
 
 const logOut = async (req,res) => {
     try{
-        const {name} = await req.user
+        const {name} = await req.user;
         req.logout();
         res.render('logout', {name:name, title:'logOut'});
     }catch(error){logger.error(error)}
@@ -36,18 +36,14 @@ const logOut = async (req,res) => {
 
 
 const loginError = (req,res) => {
-    res.render('login_error', {title:'login_error'})
+    res.render('login_error.ejs', {title:'login_error'})
 };
 
 
 const signupError = (req, res) => {
-    res.render('register_error', {title:'SingUp_error'})
+    res.render('register_error.ejs', {title:'SingUp_error'})
 };
 
-
-const get404 = (req, res) => {
-    res.render('404', {title:'404'})
-}
 
 export default {
     getInitial,
@@ -57,5 +53,4 @@ export default {
     logOut,
     signupError,
     loginError,
-    get404
 }

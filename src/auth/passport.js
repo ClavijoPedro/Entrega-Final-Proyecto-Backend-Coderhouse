@@ -22,7 +22,7 @@ passport.use('login', new LocalStrategy({
     },
     async (email, password, done) => {
         try{      
-            let user = await users.listOne({email});
+            let user = await users.getOne({email});
             if (!user) {
                 logger.error(`Usuario ${email} no encontrado`);
                 return done(null, false, {message:'Usuario no encontrado'});
@@ -45,7 +45,7 @@ passport.use('login', new LocalStrategy({
     },
     async (req, email, password, done) => {
         try{
-            let user = await users.listOne({email})
+            let user = await users.getOne({email})
 
             if(user){
                 return done(`El usuario ${email} ya esta registrado`)
@@ -82,7 +82,7 @@ passport.use('login', new LocalStrategy({
             const sendInfoToAdminEmail = sendMail(mailAdminOptions)
 
             //guardo en mongo
-            users.save(newUser)
+            users.create(newUser)
            
             //guardo newUser en req.user
             return done(null, newUser)
@@ -100,7 +100,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((email, done) =>{
-    const user = users.listOne({email});
+    const user = users.getOne({email});
     done(null, user)
 });
 

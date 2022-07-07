@@ -1,5 +1,4 @@
 import {cpus} from 'os';
-import config from '../config/config.js';
 import logger from '../utils/logger.js';
 
 const getServerInfo = (req, res) => {

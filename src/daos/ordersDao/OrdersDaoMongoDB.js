@@ -1,11 +1,11 @@
 import mongoose from 'mongoose';
-import config from '../config/config.js';
-import Dao from './Dao.js';
-import logger from '../utils/logger.js';
+import config from '../../config/config.js';
+import Dao from '../Dao.js';
+import logger from '../../utils/logger.js';
 
 
 
-class ProductDaoMongoDB extends Dao {
+class OrdersDaoMongoDB extends Dao {
     
     constructor(model, schema){
         super();
@@ -30,45 +30,35 @@ class ProductDaoMongoDB extends Dao {
     }
 
 
-    async listAll(){
+    async getAll(filter){
         try{
-            const items = await this.model.find()
-            return items;
+            const orders = await this.model.find({filter})
+            return orders;
         }
         catch(error){ logger.error(error) }
     }
 
 
-    async listById(id){
+    async getById(id){
         try{
-            const item = await this.model.findById(id);
-            return item;
+            const order = await this.model.findById(id);
+            return order;
         }
         catch(error){ logger.error(error) }
     }
 
-    async listOne(itm){
+    async create(prod){
         try{
-            const item = await this.model.findOne(itm);
-            return item;
+           const order = new this.model(prod); 
+           return await order.save()
         }
         catch(error){ logger.error(error) }
     }
-
-
-    async save(itm){
-        try{
-           const item = new this.model(itm); 
-           return await item.save()
-        }
-        catch(error){ logger.error(error) }
-    }
-
 
     async updateById(id, update){
         try{
-            const udatedItem = await this.model.findByIdAndUpdate(id, update)
-            return udatedItem
+            const updatedorder = await this.model.findByIdAndUpdate(id, update)
+            return updatedorder
         }
         catch(error){ logger.error(error) }
     }
@@ -76,8 +66,8 @@ class ProductDaoMongoDB extends Dao {
 
     async deleteById(id){
         try{
-            const deletedItem = await this.model.findByIdAndDelete(id)
-            return deletedItem 
+            const deletedorder = await this.model.findByIdAndDelete(id)
+            return deletedorder 
         }
         catch(error){ logger.error(error) }
     }
@@ -93,4 +83,4 @@ class ProductDaoMongoDB extends Dao {
 }
 
 
-export default ProductDaoMongoDB
+export default OrdersDaoMongoDB

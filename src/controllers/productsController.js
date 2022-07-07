@@ -10,8 +10,8 @@ const getProducts = async (req, res) => {
     const { id } = req.params;
     try{
         // const {name, avatar, email} = await req.user
-        const product = await productos.listById(id); 
-        const prodList = await productos.listAll();
+        const product = await productos.getById(id); 
+        const prodList = await productos.getAll();
         //paso plantilla y data a ejs             
         res.status(200).json(id ? product : prodList); 
     }catch(err){ logger.error(err) };
@@ -23,7 +23,7 @@ const saveProducts = async (req, res) => {
     const item = req.body;
     try{
         if(Object.keys(item).length > 0){ 
-            const prodId = await productos.save(item);     
+            const prodId = await productos.create(item);     
             res.status(200).json(prodId);
         }else{logger.warn('Objeto no valido ingresado')}; 
     }catch(err){ logger.error(err) };

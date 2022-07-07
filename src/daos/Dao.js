@@ -1,21 +1,21 @@
 class Dao{
     
 
-    listAll(){
-        throw new Error('falto implementar listAll()');
+    getAll(){
+        throw new Error('falto implementar getAll()');
     };
 
 
-    listById(id){
-        throw new Error('falto implementar listById()');
+    getById(id){
+        throw new Error('falto implementar getById()');
     };
 
-    listOne(itm){
-        throw new Error('falto implementar listOne()');
+    getOne(itm){
+        throw new Error('falto implementar getOne()');
     };
 
 
-    save(itm){
+    create(itm){
         throw new Error('falto implementar save()');
     };
 

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import prodController from '../controllers/productosController.js'
+import prodController from '../controllers/productsController.js'
 import isAdmin from '../middlewares/isAdmin.js';
 
 

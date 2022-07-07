@@ -46,7 +46,7 @@ form{
 
 #mensajes{
     max-height: 270px;
-    overflow:scroll;
+    overflow:auto;
     scrollbar-width: none;
 }
 

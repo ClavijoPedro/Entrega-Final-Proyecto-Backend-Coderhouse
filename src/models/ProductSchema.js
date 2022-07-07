@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 const { Schema } = mongoose
 
-const ProductoSchema = new Schema(
+const ProductSchema = new Schema(
     {    
         name: {type: String, required: true} ,
         description: {type: String, required: true},
@@ -9,9 +9,9 @@ const ProductoSchema = new Schema(
         stock: {type: Number, required: true},
         image: {type: String, required: true},
         qty: {type: Number, default:1},
-        code: {type: String, default: () => Date.now()}, 
+        category:{type: String, required: true}, 
     },
     {timestamps: true}
 ); 
 
-export default ProductoSchema
+export default ProductSchema
