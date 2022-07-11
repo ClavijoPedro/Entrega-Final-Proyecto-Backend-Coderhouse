@@ -11,14 +11,14 @@ class MessageDaoMongoDB extends Dao {
         super();
         this.model = mongoose.model(model, schema);
         this.connectDB(config.MONGO_URI);  
-    }
+    };
 
    
     async connectDB(connection){
         try{
             await mongoose.connect(connection)
         }catch(error){ logger.error(error)}
-    }
+    };
  
 
     async disconnect(){    
@@ -27,7 +27,7 @@ class MessageDaoMongoDB extends Dao {
             .then(() => {
                 logger.info('MongoDB disconnected', mongoose.connection.readyState)})
         }catch(err){ logger.error(err)}
-    }
+    };
 
 
     async getAll(){
@@ -36,7 +36,7 @@ class MessageDaoMongoDB extends Dao {
             return messages;
         }
         catch(error){ logger.error(error) }
-    }
+    };
 
 
     async create(msj){
@@ -45,7 +45,7 @@ class MessageDaoMongoDB extends Dao {
            return await message.save()
         }
         catch(error){ logger.error(error) }
-    }
+    };
 
     
     async getByEmail(email){
@@ -54,10 +54,10 @@ class MessageDaoMongoDB extends Dao {
             return messages;
         }
         catch(error){ logger.error(error) }
-    }
+    };
 
 
-}
+};
 
 
 export default MessageDaoMongoDB

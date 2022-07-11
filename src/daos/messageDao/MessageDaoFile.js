@@ -48,7 +48,7 @@ class MessageDaoFile extends Dao {
             return messages;
         }
         catch(error){ logger.error(error) }
-    }
+    };
 
 };
 

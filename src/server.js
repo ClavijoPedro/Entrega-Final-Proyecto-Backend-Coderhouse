@@ -27,6 +27,7 @@ import { errorHandler, notMatchHandler } from './middlewares/errorsHandler.js';
 //PASSPORT
 import './auth/passport.js'
 
+
 const app = express();
 const httpServer = new HTTPServer(app);
 const io = new IOServer(httpServer);
@@ -78,8 +79,6 @@ io.on('connection', chatHandler.chatSockets )
 //ERRORS
 app.use(notMatchHandler);
 app.use(errorHandler)
-
-
 
 
 //SERVER

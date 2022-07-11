@@ -1,7 +1,9 @@
 const socket = io();
 
-const chatScroll = document.getElementById('mensajes');
-chatScroll.scrollTop = chatScroll.scrollHeight;
+const chatContainer = document.getElementById('mensajes');
+const message = document.getElementById('userMsg');
+const user = document.getElementById('userMail')
+const chatTyping = document.getElementById('chatTyping')
 
 
 //traigo los datos del userForm y los emito
@@ -9,30 +11,41 @@ const messagesForm = document.getElementById('msgsForm');
 messagesForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const userMessage = { 
-        email:document.getElementById('userMail').value,
+        email:user.value,
         type:'usuario',
-        body:document.getElementById('userMsg').value,    
+        body:message.value,    
     };
     socket.emit('newMessage', userMessage);
     messagesForm.reset();
 })
 
-// capturo el evento messages y lo renderizo
+// render mensajes en cliente
 socket.on('messages', msjs => {
     const messages = msjs.map(m => {
-       return(`   
-            <div class="uMsj mb-2 rounded text-end bg-light p-2">
-                <p class="m-0 msjData">
-                    <small>
-                        <b>${m.type}</b>
-                        <span>${m.email}</span>
-                    </small>
-                </p>
-                <p class="m-0 msjText">
-                    <i>${m.body}</i>
-                </p>   
-            </div>
+        return(`   
+        <div class="uMsj mb-2 rounded text-end bg-light p-2">
+        <p class="m-0 msjData">
+        <small>
+        <b>${m.type}</b>
+        <span>${m.email}</span>
+        </small>
+        </p>
+        <p class="m-0 msjText">
+        <i>${m.body}</i>
+        </p>   
+        </div>
         `)
     });
-    document.getElementById('mensajes').innerHTML = messages
+    chatContainer.innerHTML = messages
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+    chatTyping.innerHTML = ''
 });
+
+//status bar
+message.addEventListener('keypress', () => {
+    socket.emit('userTyping', user.value)
+} );
+
+socket.on('userTyping', (userName) => {
+    chatTyping.innerHTML = `<p>${userName} está escribiendo...</p>`
+})

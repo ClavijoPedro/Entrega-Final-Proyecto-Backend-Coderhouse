@@ -31,6 +31,7 @@ export default{
     PORT: process.env.PORT || 3000,
     MODO : process.argv[2],
     PRIVATE_KEY: process.env.PRIVATE__KEY,
+    ADMIN_USER: process.env.ADMIN__USER,
     ADMIN_PASS: process.env.ADMIN__PASS,
     EMAIL_USER: process.env.EMAIL__USER,
     EMAIL_PASS: process.env.EMAIL__PASS,

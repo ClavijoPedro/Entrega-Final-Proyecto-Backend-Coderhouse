@@ -70,7 +70,7 @@ const orderCartProudcts = async (req,res) => {
         }
 
     }catch(err){logger.error(err)}
-}
+};
 
 
 //Vacía un carrito y lo elimina
@@ -128,6 +128,5 @@ export default{
     getCartProducts,
     orderCartProudcts,
     sendToCart,
-    removeFromCart
-    
+    removeFromCart  
 }

@@ -16,7 +16,6 @@ class UserDaoFile extends Dao {
     async getAll(){
         try{
             const userList = await fs.readFile(this.file, 'utf-8')
-            // logger.info('esto es item list',userList)
             return JSON.parse(userList)
         }catch(err){
             if(err.code === 'ENOENT'){
@@ -32,11 +31,11 @@ class UserDaoFile extends Dao {
         try{
             const userList = await this.list;
             const user = userList.find( u => u.id === Number(id));
-            logger.info('Item:\n',user)
             return user
         }catch(err){ logger.error(err)}
     };
 
+    
     async getOne(usr){
         try{
             const userList = await this.getAll();

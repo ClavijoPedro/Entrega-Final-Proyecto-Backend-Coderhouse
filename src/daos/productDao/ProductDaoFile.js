@@ -13,10 +13,9 @@ class ProductDaoFile extends Dao {
     };
 
 
-    async getAll(filter){
+    async getAll(){
         try{
             const productList = await fs.readFile(this.file, 'utf-8')
-            // logger.info('esto es item list',productList)
             return JSON.parse(productList)
         }catch(err){
             if(err.code === 'ENOENT'){
@@ -32,10 +31,19 @@ class ProductDaoFile extends Dao {
         try{
             const productList = await this.getAll();
             const product = productList.find( p => p.id === Number(id));
-            logger.info('product:\n',product)
             return product
         }catch(err){ logger.error(err)}
     };
+
+
+    async getByCategory(category){
+        try{
+            const productList = await this.getAll();
+            const products = productList.filter( p => p.category === category);
+            return products
+        }catch(err){ logger.error(err)}
+    };
+
 
     async getOne(prod){
         try{

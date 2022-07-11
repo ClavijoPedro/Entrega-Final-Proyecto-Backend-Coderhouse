@@ -18,6 +18,6 @@ const getServerInfo = (req, res) => {
     } catch (error) {
         logger.error(error)
     }
-}
+};
 
 export default {getServerInfo}

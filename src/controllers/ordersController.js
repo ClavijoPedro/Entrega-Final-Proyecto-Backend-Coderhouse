@@ -17,4 +17,4 @@ const getOrders = async (req, res) => {
 
 export default{
     getOrders
-}
+};

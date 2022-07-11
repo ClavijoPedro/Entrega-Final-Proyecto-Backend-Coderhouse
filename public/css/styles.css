@@ -54,6 +54,10 @@ form{
     display: none;
 
 }
+
+#chatTyping{
+    font-size: 11px;
+}
 .msjData{
     font-size: 0.8rem;
     color: brown;

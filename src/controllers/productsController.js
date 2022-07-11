@@ -18,6 +18,17 @@ const getProducts = async (req, res) => {
 };
 
 
+const getProductsByCategory = async (req, res) => {
+    const {category} = req.params;
+    try {
+        const products = await productsDao.getByCategory(category)
+        res.status(200).json(products)
+    } catch (error) {
+        logger.error(error)
+    }
+};
+
+
 //incorporar productos al listado
 const saveProducts = async (req, res) => {   
     const item = req.body;
@@ -58,6 +69,7 @@ const deleteProduct = async (req, res) => {
 
 export default{
     getProducts,
+    getProductsByCategory,
     saveProducts,
     UpdateProducts,
     deleteProduct,

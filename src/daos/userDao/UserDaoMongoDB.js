@@ -11,14 +11,14 @@ class UserDaoMongoDB extends Dao {
         super();
         this.model = mongoose.model(model, schema);
         this.connectDB(config.MONGO_URI);  
-    }
+    };
 
    
     async connectDB(connection){
         try{
             await mongoose.connect(connection)
         }catch(error){ logger.error(error)}
-    }
+    };
  
 
     async disconnect(){    
@@ -27,7 +27,7 @@ class UserDaoMongoDB extends Dao {
             .then(() => {
                 logger.info('MongoDB disconnected', mongoose.connection.readyState)})
         }catch(err){ logger.error(err)}
-    }
+    };
 
 
     async getAll(){
@@ -36,7 +36,7 @@ class UserDaoMongoDB extends Dao {
             return users;
         }
         catch(error){ logger.error(error) }
-    }
+    };
 
 
     async getById(id){
@@ -45,7 +45,8 @@ class UserDaoMongoDB extends Dao {
             return user;
         }
         catch(error){ logger.error(error) }
-    }
+    };
+
 
     async getOne(usr){
         try{
@@ -53,7 +54,7 @@ class UserDaoMongoDB extends Dao {
             return user;
         }
         catch(error){ logger.error(error) }
-    }
+    };
 
 
     async create(usr){
@@ -62,7 +63,7 @@ class UserDaoMongoDB extends Dao {
            return await user.save()
         }
         catch(error){ logger.error(error) }
-    }
+    };
 
 
     async updateById(id, update){
@@ -71,7 +72,7 @@ class UserDaoMongoDB extends Dao {
             return updatedUser
         }
         catch(error){ logger.error(error) }
-    }
+    };
 
 
     async deleteById(id){
@@ -80,7 +81,7 @@ class UserDaoMongoDB extends Dao {
             return deletedUser 
         }
         catch(error){ logger.error(error) }
-    }
+    };
 
     
     async deleteAll(){
@@ -89,8 +90,8 @@ class UserDaoMongoDB extends Dao {
             return deleted 
         }
         catch(error){ logger.error(error) }
-    }
-}
+    };
+};
 
 
 export default UserDaoMongoDB

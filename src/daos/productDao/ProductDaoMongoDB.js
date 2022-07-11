@@ -11,14 +11,14 @@ class ProductDaoMongoDB extends Dao {
         super();
         this.model = mongoose.model(model, schema);
         this.connectDB(config.MONGO_URI);  
-    }
+    };
 
    
     async connectDB(connection){
         try{
             await mongoose.connect(connection)
         }catch(error){ logger.error(error)}
-    }
+    };
  
 
     async disconnect(){    
@@ -27,7 +27,7 @@ class ProductDaoMongoDB extends Dao {
             .then(() => {
                 logger.info('MongoDB disconnected', mongoose.connection.readyState)})
         }catch(err){ logger.error(err)}
-    }
+    };
 
 
     async getAll(){
@@ -36,7 +36,16 @@ class ProductDaoMongoDB extends Dao {
             return products;
         }
         catch(error){ logger.error(error) }
-    }
+    };
+
+
+    async getByCategory(category){
+        try{
+            const products = await this.model.find({category});
+            return products;
+        }
+        catch(error){ logger.error(error) }
+    };
 
 
     async getById(id){
@@ -45,7 +54,7 @@ class ProductDaoMongoDB extends Dao {
             return product;
         }
         catch(error){ logger.error(error) }
-    }
+    };
 
     async getOne(prod){
         try{
@@ -53,7 +62,7 @@ class ProductDaoMongoDB extends Dao {
             return product;
         }
         catch(error){ logger.error(error) }
-    }
+    };
 
 
     async create(prod){
@@ -62,7 +71,7 @@ class ProductDaoMongoDB extends Dao {
            return await product.save()
         }
         catch(error){ logger.error(error) }
-    }
+    };
 
 
     async updateById(id, update){
@@ -71,7 +80,7 @@ class ProductDaoMongoDB extends Dao {
             return updatedProduct
         }
         catch(error){ logger.error(error) }
-    }
+    };
 
 
     async deleteById(id){
@@ -80,7 +89,7 @@ class ProductDaoMongoDB extends Dao {
             return deletedProduct 
         }
         catch(error){ logger.error(error) }
-    }
+    };
 
     
     async deleteAll(){
@@ -89,8 +98,8 @@ class ProductDaoMongoDB extends Dao {
             return deleted 
         }
         catch(error){ logger.error(error) }
-    }
-}
+    };
+};
 
 
 export default ProductDaoMongoDB

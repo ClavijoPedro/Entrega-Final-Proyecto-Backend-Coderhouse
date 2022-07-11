@@ -1,13 +1,12 @@
 import passport from 'passport'
-import { Strategy } from "passport-local";
+import { Strategy as LocalStrategy } from "passport-local";
+import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
 import logger from "../utils/logger.js";
 import {hashPassword, isValidPassword} from '../utils/encryptPassword.js'
 import sendMail from '../utils/sendMail.js';
 import config from '../config/config.js';
 import { usersDao } from '../daos/daoFactory.js';
 
-
-const LocalStrategy = Strategy;
 
 //users DB
 const users = usersDao;
@@ -17,10 +16,9 @@ const ADMIN__EMAIL = config.ADMIN_EMAIL;
 
 //Login
 passport.use('login', new LocalStrategy({
-        usernameField: 'email',
-        passwordField: 'password',
-    },
-    async (email, password, done) => {
+    usernameField: 'email',
+    passwordField: 'password',
+}, async (email, password, done) => {
         try{      
             let user = await users.getOne({email});
             if (!user) {
@@ -30,20 +28,18 @@ passport.use('login', new LocalStrategy({
             if(!isValidPassword(user, password)){
                 return done(null, false, {message:'Contraseña invalida'});
             }
-
             return done(null, user);
         }catch(error){logger.info(error)}
     }
-    ));
+));
     
     
-    //Register
-    passport.use('signup', new LocalStrategy({
-        usernameField: 'email',
-        passwordField: 'password',
-        passReqToCallback: true
-    },
-    async (req, email, password, done) => {
+//Register
+passport.use('signup', new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback: true
+}, async (req, email, password, done) => {
         try{
             let user = await users.getOne({email})
 
@@ -92,6 +88,21 @@ passport.use('login', new LocalStrategy({
             done(error)}
     }
 ));
+
+
+//JWT AUTH - USE JSONWEBTOKEN COMUN PARA GENERAR EL TOKEN EL RUTA LOGIN 
+//Y AHORA USO PASSPOR-JWT  PARA VERIFICAR SI ESTA BIEN EL TOKEN
+// passport.use(new JwtStrategy({
+//     secretOrKey: 'top_secret',
+//     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken()
+// }, async (token, done) => {
+//     try {
+//         // const user = await users.getById(token.user.id)
+//         return done(null, token.user)
+//     } catch (e) {
+//         done(error)
+//     }
+// }))
 
 
 //serialize

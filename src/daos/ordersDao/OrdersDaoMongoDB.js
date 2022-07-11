@@ -11,14 +11,14 @@ class OrdersDaoMongoDB extends Dao {
         super();
         this.model = mongoose.model(model, schema);
         this.connectDB(config.MONGO_URI);  
-    }
+    };
 
    
     async connectDB(connection){
         try{
             await mongoose.connect(connection)
         }catch(error){ logger.error(error)}
-    }
+    };
  
 
     async disconnect(){    
@@ -27,7 +27,7 @@ class OrdersDaoMongoDB extends Dao {
             .then(() => {
                 logger.info('MongoDB disconnected', mongoose.connection.readyState)})
         }catch(err){ logger.error(err)}
-    }
+    };
 
 
     async getAll(filter){
@@ -36,7 +36,7 @@ class OrdersDaoMongoDB extends Dao {
             return orders;
         }
         catch(error){ logger.error(error) }
-    }
+    };
 
 
     async getById(id){
@@ -45,7 +45,8 @@ class OrdersDaoMongoDB extends Dao {
             return order;
         }
         catch(error){ logger.error(error) }
-    }
+    };
+
 
     async create(prod){
         try{
@@ -53,7 +54,8 @@ class OrdersDaoMongoDB extends Dao {
            return await order.save()
         }
         catch(error){ logger.error(error) }
-    }
+    };
+
 
     async updateById(id, update){
         try{
@@ -61,7 +63,7 @@ class OrdersDaoMongoDB extends Dao {
             return updatedorder
         }
         catch(error){ logger.error(error) }
-    }
+    };
 
 
     async deleteById(id){
@@ -70,7 +72,7 @@ class OrdersDaoMongoDB extends Dao {
             return deletedorder 
         }
         catch(error){ logger.error(error) }
-    }
+    };
 
     
     async deleteAll(){
@@ -79,8 +81,8 @@ class OrdersDaoMongoDB extends Dao {
             return deleted 
         }
         catch(error){ logger.error(error) }
-    }
-}
+    };
+};
 
 
 export default OrdersDaoMongoDB
