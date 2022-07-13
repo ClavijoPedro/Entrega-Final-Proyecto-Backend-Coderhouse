@@ -1,9 +1,8 @@
-const messageDTO = (message) => {
+const messageDTO = (message, id, timestamp) => {
     return{   
-        email: message.email,
-        type:message.type,
-        body:message.body,
-        timestamp: message.timestamp        
+        ...message,
+        id,
+        timestamp       
     };
 };
 

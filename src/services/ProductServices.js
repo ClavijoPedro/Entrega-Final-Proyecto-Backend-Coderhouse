@@ -1,6 +1,6 @@
 import logger from '../utils/logger.js';
 import { productsDao } from '../daos/daoFactory.js';
-import ProductModel from '../models/productModel.js';
+import ProductModel from '../models/ProductModel.js';
 
 
 class ProductsServices{

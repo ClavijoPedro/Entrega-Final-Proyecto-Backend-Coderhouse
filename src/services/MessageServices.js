@@ -20,8 +20,7 @@ class MessageServices{
 
     async createMessage(msg){
         try{
-           msg.timestamp = new Date().toLocaleString();
-           MessageModel.validate(msg) 
+           MessageServices.validateMessage(msg, true) 
            const message = await this.messageDao.create(msg); 
            return message
         }
@@ -37,7 +36,13 @@ class MessageServices{
         catch(error){ logger.error(error) }
     };
 
-
+    static validateMessage(message, required){
+        try{
+            MessageModel.validate(message, required);
+        }catch(error){
+            throw new Error(`la orden posee un formato json invalido o faltan datos ${error.details[0].message}`);
+        }
+    };
 };
 
 

@@ -2,7 +2,6 @@ import { usersDao } from "../daos/daoFactory.js";
 import UserModel from "../models/UserModel.js";
 import logger from "../utils/logger.js";
 import { sendSignupMail } from "../utils/sendMail.js";
-// import { sendSignupMail } from "../utils/sendMail.js";
 
 
 class UserServices {
@@ -40,7 +39,7 @@ class UserServices {
     async createUser(usr){
         try{
            usr.timestamp = new Date().toLocaleString();
-           UserModel.validate(usr, true); 
+           UserServices.validateUser(usr, true); 
            const newUser = await this.usersDao.create(usr);
            if(newUser){
                await sendSignupMail(newUser)
@@ -53,7 +52,7 @@ class UserServices {
 
     async updateUserById(id, update){
         try{
-            UserModel.validate(usr, false)
+            UserServices.validateUser(usr, false);
             const updatedUser = await this.usersDao.updateById(id, update)
             return updatedUser
         }
@@ -76,6 +75,14 @@ class UserServices {
             return deleted 
         }
         catch(error){ logger.error(error) }
+    };
+
+    static validateUser(user, required){
+        try{
+            UserModel.validate(user, required);
+        }catch(error){
+            throw new Error(`el usuario posee un formato json invalido o faltan datos ${error.details[0].message}`);
+        }
     };
 };
 

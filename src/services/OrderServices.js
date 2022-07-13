@@ -32,7 +32,7 @@ class OrderServices{
            const ordersList = await this.getAllOrders();
            const orderNumber = ordersList.length == 0 ? 1 : ordersList[ordersList.length - 1].orderNumber + 1; 
            const order = new OrderModel(user.email, orderNumber, products);
-           OrderModel.validate(order); 
+           OrderServices.validateOrder(order, true); 
            const saveOrder = await this.ordersDao.create(order);
            if(saveOrder){
                await sendOrderMail(user.name, user.email, products );
@@ -45,6 +45,7 @@ class OrderServices{
 
     async updateOrderById(id, update){
         try{
+            OrderServices.validateOrder(update, false);
             const updatedorder = await this.ordersDao.updateById(id, update)
             return updatedorder
         }
@@ -67,6 +68,14 @@ class OrderServices{
             return deleted 
         }
         catch(error){ logger.error(error) }
+    };
+
+    static validateOrder(order, required){
+        try{
+            OrderModel.validate(order, required);
+        }catch(error){
+            throw new Error(`la orden posee un formato json invalido o faltan datos ${error.details[0].message}`);
+        }
     };
 };
 

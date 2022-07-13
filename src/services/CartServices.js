@@ -1,11 +1,12 @@
 import { cartDao } from "../daos/daoFactory.js"
+import CartModel from "../models/CartModel.js";
 import logger from "../utils/logger.js";
 
 class CartServices{
     
     constructor(){
         this.cartDao = cartDao;  
-    }
+    };
 
     async getAllCarts(){
         try{
@@ -13,7 +14,7 @@ class CartServices{
             return carts;
         }
         catch(error){ logger.error(error) }
-    }
+    };
 
 
     async getCartById(id){
@@ -22,7 +23,7 @@ class CartServices{
             return cart;
         }
         catch(error){ logger.error(error) }
-    }
+    };
 
     async getCart(crt){
         try{
@@ -30,17 +31,17 @@ class CartServices{
             return cart;
         }
         catch(error){ logger.error(error) }
-    }
+    };
 
 
     async createCart(crt){
         try{
-           
+           CartServices.validateCart(crt, true)
            const createdCart = await this.cartDao.create(crt) 
            return createdCart
         }
         catch(error){ logger.error(error) }
-    }
+    };
 
 
     async updateCartById(id, update){
@@ -49,7 +50,7 @@ class CartServices{
             return updatedcart
         }
         catch(error){ logger.error(error) }
-    }
+    };
 
 
     async deleteCartById(id){
@@ -58,7 +59,7 @@ class CartServices{
             return deletedCart 
         }
         catch(error){ logger.error(error) }
-    }
+    };
 
     
     async deleteAllCarts(){
@@ -67,7 +68,16 @@ class CartServices{
             return deleted 
         }
         catch(error){ logger.error(error) }
-    }
+    };
+
+    static validateCart(cart, required){
+        try{
+            CartModel.validate(cart, required);
+        }catch(error){
+            throw new Error(`El carrito posee un formato json invalido o faltan datos ${error.details[0].message}`);
+        }
+    };
+
 }
 
 
