@@ -63,7 +63,7 @@ class ProductDaoFile extends Dao {
             const newProduct = productDTO(prod, id, timestamp)
             const newProductList = [...productList, newProduct]
             await fs.writeFile(this.file, JSON.stringify(newProductList, null, 4));
-            return id
+            return newProduct
         }catch(err){
             logger.error(`no se pudo guardar producto, error: ${err}`);
         }
@@ -83,6 +83,7 @@ class ProductDaoFile extends Dao {
                 const newProduct = Object.assign({},product, productUpdate);
                 productList[index] = newProduct;
                 await fs.writeFile(this.file, JSON.stringify(productList, null, 4));
+                return newProduct
             }
         }catch(err){
             logger.error(`No se pudo actualizar el producto, error: ${err}`);
@@ -95,6 +96,7 @@ class ProductDaoFile extends Dao {
             const productList = await this.getAll();
             const newProductList = productList.filter(p => p.id !== Number(id));
             await fs.writeFile(this.file, JSON.stringify(newProductList, null, 4))
+            return productDTO({}, id, null)
         }catch(err){
             logger.error(`no se pudo eliminar el producto, error: ${err}`);
         }

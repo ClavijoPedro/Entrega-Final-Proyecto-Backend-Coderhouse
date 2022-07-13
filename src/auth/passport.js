@@ -47,9 +47,11 @@ passport.use('signup', new LocalStrategy({
             const hashedPassword = hashPassword(password);
             const newUser = {
                 ...req.body,
+                phone:req.body.full_phone || req.body.phone,
                 password: hashedPassword,
                 avatar: req.file.filename || '',
             };
+            console.log(newUser)
             const saveUser = await users.createUser(newUser)
             return done(null, newUser)
             

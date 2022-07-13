@@ -34,7 +34,6 @@ class MessageDaoFile extends Dao {
             const newMessage = messageDTO(msg, id, timestamp);
             const newMessageList = [...messageList, newMessage]
             await fs.writeFile(this.file, JSON.stringify(newMessageList, null, 4));
-            logger.info('Item  guardado:\n', newMessage)
             return id
         }catch(err){
             logger.error(`no se pudo guardar el mensaje error: ${err}`);

@@ -20,19 +20,55 @@
         "category": "pc",
         "code": 1657697373097,
         "qty": 1,
-        "id": "2",
+        "id": 2,
         "timestamp": "13/7/2022 04:30:18"
     },
     {
-        "name": "parlantes-service3sac23213",
-        "price": "8841321",
+        "name": "parlantes",
+        "price": "13000",
         "description": "parlantes genius Gx sw-g2.1",
-        "stock": "98",
+        "stock": "20",
         "image": "https://http2.mlstatic.com/D_NQ_NP_715213-MLA31026802368_062019-O.webp",
-        "category": "pc",
-        "code": 1657697381909,
+        "category": "perifericos",
+        "code": 1657735077550,
         "qty": 1,
         "id": 3,
-        "timestamp": "13/7/2022 04:36:44"
+        "timestamp": "13/7/2022 14:57:57"
+    },
+    {
+        "name": "parlantes",
+        "price": "13000",
+        "description": "parlantes genius Gx sw-g2.1",
+        "stock": "20",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_715213-MLA31026802368_062019-O.webp",
+        "category": "perifericos",
+        "code": 1657735156223,
+        "qty": 1,
+        "id": 4,
+        "timestamp": "13/7/2022 14:59:16"
+    },
+    {
+        "name": "parlantes",
+        "price": "13000",
+        "description": "parlantes genius Gx sw-g2.1",
+        "stock": "20",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_715213-MLA31026802368_062019-O.webp",
+        "category": "perifericos",
+        "code": 1657735314670,
+        "qty": 1,
+        "id": 5,
+        "timestamp": "13/7/2022 15:01:54"
+    },
+    {
+        "name": "parlantes",
+        "price": "13000",
+        "description": "parlantes genius Gx sw-g2.1",
+        "stock": "20",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_715213-MLA31026802368_062019-O.webp",
+        "category": "perifericos",
+        "code": 1657735370195,
+        "qty": 1,
+        "id": 6,
+        "timestamp": "13/7/2022 15:02:50"
     }
 ]

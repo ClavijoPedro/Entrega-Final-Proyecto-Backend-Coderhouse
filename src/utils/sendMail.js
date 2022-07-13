@@ -35,17 +35,16 @@ export const sendOrderMail = async (name, email, products) => {
         to: config.EMAIL_ADMIN, //cambiar a email del user
         subject: `Nuevo pedido ${name} ${email}`, 
         html: `
-            <h3>Nuevo pedido:</h3>
+            <h3>Nuevo pedido de [${email}]:</h3>
             <br>
             <ul>
-                ${products.map(p => `<li>Producto: ${p.name} - Código:${p.code} - Precio:$${p.price}</li>`)}
+                ${products.map(p => `<li>Producto: ${p.name} - Código:${p.code} - Precio:$${p.price} - cantidad:${p.qty}</li>`)}
             </ul>
         `
     };
     try{
         const info = await transporter.sendMail(options)
         logger.info(info)
-        console.info(info)
     }catch(error){logger.error(error)}
 };
 

@@ -52,7 +52,7 @@ class UserDaoFile extends Dao {
             const newUser = userDTO(user, id, timestamp);
             const newUserList = [...userList, newUser]
             await fs.writeFile(this.file, JSON.stringify(newUserList, null, 4));
-            return id
+            return newUser
         }catch(err){
             logger.error(`no se pudo guardar el usuario error: ${err}`);
         }

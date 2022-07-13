@@ -6,7 +6,7 @@ import MessageServices from "../services/MessageServices.js";
 const messageServices =  new MessageServices;
 
 const chatSockets = async (socket) => {
-    console.log(`new connection`)
+    logger.info(`new connection`)
     const messages = await messageServices.getAllMessages()
     if(messages){
         try {

@@ -6,13 +6,14 @@ const user = document.getElementById('userMail')
 const chatTyping = document.getElementById('chatTyping')
 
 
-//traigo los datos del userForm y los emito
+//capturo y emito datos del userForm
 const messagesForm = document.getElementById('msgsForm');
 messagesForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    const userType = user.value == "admin@admin" ? "sistema " : "usuario";
     const userMessage = { 
         email:user.value,
-        type:'usuario',
+        type:userType,
         body:message.value,    
     };
     socket.emit('newMessage', userMessage);

@@ -8,5 +8,15 @@
         "avatar": "1657692085158-avatar-admin-session.png",
         "timestamp": "13/7/2022 03:01:25",
         "id": 1
+    },
+    {
+        "name": "pepe",
+        "password": "$2b$10$Dxh1oYFU/jB69mg0pHSn9eGG.9fVb5/6lhBMFYJ7F32TWj0p.Vyce",
+        "email": "123@gmail.com",
+        "address": "maipu 100",
+        "phone": "1561222224",
+        "avatar": "1657732425269-avatar-user-session.png",
+        "timestamp": "13/7/2022 14:13:45",
+        "id": 2
     }
 ]

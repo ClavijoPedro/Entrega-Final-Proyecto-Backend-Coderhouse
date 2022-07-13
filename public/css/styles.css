@@ -43,9 +43,13 @@ form{
 }
 
 
-
+.chat{
+    min-width: 450px;
+}
 #mensajes{
     max-height: 270px;
+    min-height: 270px;
+    min-width: 280px;
     overflow:auto;
     scrollbar-width: none;
 }

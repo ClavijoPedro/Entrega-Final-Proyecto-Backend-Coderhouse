@@ -11,8 +11,8 @@ const ProductSchema = new Schema(
         code: {type: Number, required: true},
         qty: {type: Number, default:1},
         category:{type: String, required: true}, 
+        timestamp:{type:String, default: () => new Date().toLocaleString()}
     },
-    {timestamps: true}
 ); 
 
 export default ProductSchema

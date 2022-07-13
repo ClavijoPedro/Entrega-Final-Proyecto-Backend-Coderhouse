@@ -36,7 +36,7 @@ class OrderServices{
            const saveOrder = await this.ordersDao.create(order);
            if(saveOrder){
                await sendOrderMail(user.name, user.email, products );
-               return order;
+               return saveOrder;
            }
         }
         catch(error){ logger.error(error) }

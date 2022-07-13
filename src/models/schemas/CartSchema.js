@@ -7,7 +7,7 @@ const CartSchema = new Schema(
     {
         email:{type:String, required:true},
         productos:[ProductoSchema],
-        timestamp:{type:Date, default: () => new Date().toLocaleString()},
+        timestamp:{type:String, default: () => new Date().toLocaleString()},
         address:{type:String, required: true}//nuevo 
     },
 );

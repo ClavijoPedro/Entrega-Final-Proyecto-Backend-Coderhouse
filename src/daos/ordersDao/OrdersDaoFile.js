@@ -45,7 +45,7 @@ class OrdersDaoFile extends Dao {
             const newOrder = orderDTO(order, id, timestamp);
             const newOrderList = [...orderList, newOrder]
             await fs.writeFile(this.file, JSON.stringify(newOrderList, null, 4));
-            return id
+            return newOrder
         }catch(err){
             logger.error(`no se pudo guardar la orden error: ${err}`);
         }

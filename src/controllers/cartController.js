@@ -1,5 +1,4 @@
 import logger from '../utils/logger.js';
-// import { sendOrderMail} from '../utils/sendMail.js';
 import CartServices from '../services/CartServices.js';
 import OrderServices from '../services/OrderServices.js';
 import ProductsServices from '../services/ProductServices.js';
@@ -14,9 +13,7 @@ const createCart = async (req, res) => {
     const {email, address} = await req.user;   
     try{
         const cartId = await cartServices.createCart({email, address, productos:[]});
-        // const user = await req.user 
-        // user.cart_id = cartId //prueba
-        res.status(200).json(cartId);                    
+        res.status(200).json({message:"carrito creado", id:cartId});                    
     }catch(err){ logger.error(err) };
 };
 
@@ -28,7 +25,6 @@ const orderCartProudcts = async (req,res) => {
     try{
         const cart = await cartServices.getCartById(cart_id);
         const saveOrder = await orderServices.createOrder(user, cart.productos)
-        // await sendOrderMail(user.name, user.email, cartProducts);
         return res.json({message:'Orden enviada', orden:saveOrder})
     }catch(err){logger.error(err)}
 };
@@ -64,7 +60,7 @@ const sendToCart = async (req, res) => {
         if(!isInCart){
             cart.productos.push(product);
             await cartServices.updateCartById(cart_id,cart);
-            res.status(201).json({message:'Producto agregado', id:id}); 
+            res.status(201).json({message:'Producto agregado', product}); 
         }
     }catch(err){ logger.error(err) }; 
 };
@@ -78,7 +74,7 @@ const removeFromCart = async (req, res) => {
         const products = cart.productos.filter(itm => itm.id != id);  
         cart.productos = products;
         await cartServices.updateCartById(cart_id, cart);   
-        res.status(200).json({message:'Producto eliminado', id:id})    
+        res.status(200).json({message:'Producto eliminado', id})    
     }catch(err){ logger.error(err) }  
 };
 

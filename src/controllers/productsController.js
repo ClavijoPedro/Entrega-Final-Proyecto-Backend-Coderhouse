@@ -32,10 +32,10 @@ const getProductsByCategory = async (req, res) => {
 
 //incorporar prodServices al listado
 const saveProducts = async (req, res) => {   
-    const product = req.body;
+    const productData = req.body;
     try{
-        const prodId = await prodServices.createProduct(product);     
-        res.status(200).json(prodId); 
+        const product = await prodServices.createProduct(productData);     
+        res.status(200).json({message:'Producto Creado', product}); 
     }catch(err){ logger.error(err) };
 };
 
