@@ -1,5 +1,5 @@
 import { promises as fs } from 'fs';
-import cartDTO from '../../dtos/cartDTO.js';
+import cartDTO from '../../dtos/cartDto.js';
 import logger from '../../utils/logger.js';
 import Dao from '../Dao.js';
 
@@ -47,7 +47,6 @@ class CartDaoFile extends Dao {
         try{
             const cartList = await this.getAll();
             const id = cartList.length == 0 ? 1 : cartList[cartList.length - 1].id + 1;
-            const code = Date.now();
             const timestamp = new Date().toLocaleString();
             const newCart = cartDTO(crt, id, timestamp);
             const newCartList = [...cartList, newCart];
