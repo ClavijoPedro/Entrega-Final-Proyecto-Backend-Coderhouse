@@ -1,4 +1,5 @@
 import { promises as fs } from 'fs';
+import userDTO from '../../dtos/userDto.js';
 import logger from '../../utils/logger.js';
 import Dao from '../Dao.js';
 
@@ -8,8 +9,6 @@ class UserDaoFile extends Dao {
     constructor(file){
         super();
         this.file = `./db/${file}.json`;
-        this.list = this.getAll();
-        
     };
 
 
@@ -29,7 +28,7 @@ class UserDaoFile extends Dao {
 
     async getById(id){
         try{
-            const userList = await this.list;
+            const userList = await this.getAll();
             const user = userList.find( u => u.id === Number(id));
             return user
         }catch(err){ logger.error(err)}
@@ -39,7 +38,7 @@ class UserDaoFile extends Dao {
     async getOne(usr){
         try{
             const userList = await this.getAll();
-            const user = userList.find(u => u.email == usr.email)
+            const user = await userList.find(u => u.email == usr.email)
             return user
         }catch(err){logger.error(err)}
     };
@@ -50,25 +49,26 @@ class UserDaoFile extends Dao {
             const userList = await this.getAll();
             const id = userList.length == 0 ? 1 : userList[userList.length - 1].id + 1;
             const timestamp = new Date().toLocaleString();
-            const newUser = {...user, timestamp, id}
+            const newUser = userDTO(user, id, timestamp);
             const newUserList = [...userList, newUser]
             await fs.writeFile(this.file, JSON.stringify(newUserList, null, 4));
-            logger.info('Item  guardado:\n', newUser)
             return id
         }catch(err){
-            logger.error(`no se pudo guardar el item error: ${err}`);
+            logger.error(`no se pudo guardar el usuario error: ${err}`);
         }
     };
 
 
-    async updateById(id, userUpdate){
+    async updateById(id, usrUpdate){
         try{
-            const userList = await this.list;
+            const userList = await this.getAll();
             const index = userList.findIndex( u => u.id === Number(id));
             if(index < 0){
-                throw new Error(`No se encuentra el producto`);
+                throw new Error(`No se encuentra el usuario`);
             }else{
+                const timestamp = new Date().toLocaleString()
                 const user = userList[index];
+                const userUpdate = userDTO(usrUpdate, id, timestamp)
                 const newUser = Object.assign({},user, userUpdate);
                 userList[index] = newUser;
                 await fs.writeFile(this.file, JSON.stringify(userList, null, 4));
@@ -81,7 +81,7 @@ class UserDaoFile extends Dao {
 
     async deleteById(id){
         try{
-            const userList = await this.list;
+            const userList = await this.getAll();
             const newUserList = userList.filter(itm => itm.id !== Number(id));
             await fs.writeFile(this.file, JSON.stringify(newUserList, null, 4))
         }catch(err){

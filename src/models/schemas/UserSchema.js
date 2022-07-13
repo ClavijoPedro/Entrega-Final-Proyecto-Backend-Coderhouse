@@ -9,6 +9,7 @@ const UserSchema = new Schema({
     address:{type:String, required:true},
     phone:{type: String, required:true},
     avatar:{type: String},
+    timestamp:{type: String, required:true},
 });
 
 export default UserSchema

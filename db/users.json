@@ -1,1 +1,12 @@
-[]
+[
+    {
+        "name": "admin",
+        "password": "$2b$10$ntKsbm3ROO1gDVasH/F4..BYsw6CjF9J8b9ydvcnZ5E2OC1qIoVHq",
+        "email": "admin@admin",
+        "address": "admin",
+        "phone": "1561222224",
+        "avatar": "1657692085158-avatar-admin-session.png",
+        "timestamp": "13/7/2022 03:01:25",
+        "id": 1
+    }
+]

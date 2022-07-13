@@ -1,19 +1,20 @@
-import { messagesDao } from "../daos/daoFactory.js";
 import logger from "../utils/logger.js";
 import { io } from "../server.js";
+import MessageServices from "../services/MessageServices.js";
 
-const msgs =  messagesDao;
+
+const messageServices =  new MessageServices;
 
 const chatSockets = async (socket) => {
-    console.log('new connection')
-    const messages = await msgs.getAll()
+    console.log(`new connection`)
+    const messages = await messageServices.getAllMessages()
     if(messages){
         try {
             socket.emit('messages', messages)
 
-            socket.on('newMessage', async msj => {
-                await msgs.create(msj)
-                const newMessages = await msgs.getAll() 
+            socket.on('newMessage', async msg => {
+                await messageServices.createMessage(msg)
+                const newMessages = await messageServices.getAllMessages() 
                 io.sockets.emit('messages', newMessages)
             });
 

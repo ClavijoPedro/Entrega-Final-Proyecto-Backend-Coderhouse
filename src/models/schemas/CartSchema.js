@@ -5,9 +5,10 @@ const { Schema } = mongoose
 
 const CartSchema = new Schema(
     {
-        user_email:{type:String, required:true},
+        email:{type:String, required:true},
         productos:[ProductoSchema],
-        timestamp:{type:Date, default: () => new Date().toLocaleString()} 
+        timestamp:{type:Date, default: () => new Date().toLocaleString()},
+        address:{type:String, required: true}//nuevo 
     },
 );
 

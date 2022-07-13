@@ -11,7 +11,7 @@ export default async function isAdmin(req, res, next){
     return res.status(401).json('Error 401 - Ruta no autorizada')
   };
   
-  if(user.name !== config.ADMIN_USER || !isValidPassword(user, config.ADMIN_PASS)){
+  if(user.name !== config.ADMIN_AUTH_USER || !isValidPassword(user, config.ADMIN_AUTH_PASS)){
     logger.warn('Ruta admin no autorizada')
     return res.status(401).json('Error 401 - Ruta no autorizada')
   };

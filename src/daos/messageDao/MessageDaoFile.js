@@ -1,4 +1,5 @@
 import { promises as fs } from 'fs';
+import messageDTO from '../../dtos/messageDto.js';
 import logger from '../../utils/logger.js';
 import Dao from '../Dao.js';
 
@@ -25,12 +26,12 @@ class MessageDaoFile extends Dao {
     };
 
 
-    async create(msj){
+    async create(msg){
         try{
             const messageList = await this.getAll();
             const id = messageList.length == 0 ? 1 : messageList[messageList.length - 1].id + 1;
             const timestamp = new Date().toLocaleString();
-            const newMessage = {...msj, timestamp, id}
+            const newMessage = messageDTO(msg, id, timestamp);
             const newMessageList = [...messageList, newMessage]
             await fs.writeFile(this.file, JSON.stringify(newMessageList, null, 4));
             logger.info('Item  guardado:\n', newMessage)

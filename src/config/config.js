@@ -1,17 +1,13 @@
 import  dotenv from 'dotenv'
-dotenv.config()
-// dotenv.config({
-//     path: path.resolve(process.cwd(), process.env.NODE_ENV + '.env')
-// });
+import path from 'path';
+
+// dotenv.config()
+dotenv.config({
+    path: path.resolve(process.cwd(), process.env.NODE_ENV+'.env')
+});
 //*==================================[NOTA]======================================*//
 
 //PARA FUNCIONALIDAD DE ENVIO DE MAILS Y WHTASAPP DESACTIVAR EVENTUALMENTE EL ANTIVIRUS
-//HABILITAR SANDBOX TWILIO PARA REALIZAR LAS PRUEBAS DE WHATSAPP (DURA SOLO 24HS)
-//PARA ENVIO DE SMS LOCAL QUITAR EL 9 DEL NUMERO DE TEL, PARA WHATSAPP AGREGARLO ES INT.
-/*
-    EJ. FORMATO TEL INT : +5491155550000
-    EJ. FORMATO TEL LOCAL : +541155550000
-*/
 
 //*==================================[]======================================*//
 
@@ -22,26 +18,29 @@ export default{
         rolling:true,
         resave: true,
         cookie: {
-            maxAge: 86400000 
+            maxAge: parseInt(process.env.SESSION__TIME) || 86400000 
         }
     },
-    NODE_ENV: process.env.NODE__ENV,
-    DB_CLIENT:process.env.DB__CLIENT,
+    NODE_ENV: process.env.NODE_ENV || 'development',
+    DB_TYPE:process.env.DB__TYPE,
     MONGO_URI: process.env.MONGO_DB_URI,
-    PORT: process.env.PORT || 3000,
-    MODO : process.argv[2],
+    MONGO_OPTIONS:{ useNewUrlParser: true, useUnifiedTopology: true },
+    PORT: process.env.PORT || 8080,
+    HOST: process.env.HOST || "127.0.0.1",
     PRIVATE_KEY: process.env.PRIVATE__KEY,
-    ADMIN_USER: process.env.ADMIN__USER,
-    ADMIN_PASS: process.env.ADMIN__PASS,
-    EMAIL_USER: process.env.EMAIL__USER,
+   
+    ADMIN_AUTH_USER: process.env.ADMIN__AUTH_USER,
+    ADMIN_AUTH_PASS: process.env.ADMIN__AUTH_PASS,
+   
+    EMAIL_ADMIN: process.env.EMAIL__ADMIN,
     EMAIL_PASS: process.env.EMAIL__PASS,
-    TWILIO_SID:process.env.TWILIO__SID,
-    TWILIO_TOKEN:process.env.TWILIO__TOKEN,
-    TWILIO_TRIAL_NUMBER: process.env.TWILIO_TRIAL_NUMBER, //para SMS
-    TWILIO_WHTSP_TRIAL_NUMBER:process.env.TWILIO__WHTSP_TRIAL_NUMBER,
 
-    
-    //VARIABLES GLOBALES PARA ENVIO DE EMAIL Y WHATSAP A ADMIN
-    ADMIN_EMAIL:process.env.ADMIN__EMAIL,
-    ADMIN_PHONE:process.env.ADMIN__PHONE,
+    NODEMAILER_TRANSPORT:{
+        service:'gmail',
+        port: 587,
+        auth: {
+            user: process.env.EMAIL__ADMIN,
+            pass: process.env.EMAIL__PASS
+        }
+    }, 
 }

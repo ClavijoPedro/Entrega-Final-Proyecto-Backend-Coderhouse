@@ -16,7 +16,7 @@ class ProductDaoMongoDB extends Dao {
    
     async connectDB(connection){
         try{
-            await mongoose.connect(connection)
+            await mongoose.connect(connection, config.MONGO_OPTIONS)
         }catch(error){ logger.error(error)}
     };
  
@@ -76,7 +76,7 @@ class ProductDaoMongoDB extends Dao {
 
     async updateById(id, update){
         try{
-            const updatedProduct = await this.model.findByIdAndUpdate(id, update)
+            const updatedProduct = await this.model.findByIdAndUpdate(id, update, {new:true})
             return updatedProduct
         }
         catch(error){ logger.error(error) }

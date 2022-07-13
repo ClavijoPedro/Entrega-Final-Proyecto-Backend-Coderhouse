@@ -1,7 +1,8 @@
-import ProductSchema from '../models/ProductSchema.js';
-import CartSchema from '../models/CartSchema.js';
-import UserSchema from "../models/UserSchema.js";
-import MessageSchema from '../models/MessageSchema.js';
+import ProductSchema from '../models/schemas/ProductSchema.js';
+import CartSchema from '../models/schemas/CartSchema.js';
+import UserSchema from "../models/schemas/UserSchema.js";
+import MessageSchema from '../models/schemas/MessageSchema.js';
+import OrderSchema from '../models/schemas/OrderSchema.js';
 import config from "../config/config.js";
 import CartDaoFile from './cartDao/CartDaoFile.js';
 import ProductDaoFile from './productDao/ProductDaoFile.js';
@@ -13,7 +14,6 @@ import MessageDaoFile from './messageDao/MessageDaoFile.js';
 import MessageDaoMongoDB from './messageDao/MessageDaoMongoDB.js';
 import OrdersDaoFile from './ordersDao/OrdersDaoFile.js';
 import OrdersDaoMongoDB from './ordersDao/OrdersDaoMongoDB.js';
-import OrderSchema from '../models/OrderSchema.js';
 
 
 let productsDao;
@@ -22,8 +22,8 @@ let usersDao;
 let messagesDao;
 let ordersDao;
 
-console.log('esto es switch', config.DB_CLIENT)
-switch(config.DB_CLIENT){
+console.log('esto es switch', config.DB_TYPE)
+switch(config.DB_TYPE){
     case 'filedb':
         productsDao = new ProductDaoFile('products')
         cartDao = new CartDaoFile('cart');

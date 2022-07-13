@@ -16,7 +16,7 @@ class CartDaoMongoDB extends Dao {
    
     async connectDB(connection){
         try{
-            await mongoose.connect(connection)
+            await mongoose.connect(connection, config.MONGO_OPTIONS)
         }catch(error){ logger.error(error)}
     }
  
@@ -58,8 +58,9 @@ class CartDaoMongoDB extends Dao {
 
     async create(crt){
         try{
-           const cart = new this.model(crt); 
-           return await cart.save()
+           const cart = new this.model(crt);
+           const createdCart = await cart.save()
+           return createdCart.id
         }
         catch(error){ logger.error(error) }
     }
@@ -67,7 +68,7 @@ class CartDaoMongoDB extends Dao {
 
     async updateById(id, update){
         try{
-            const updatedcart = await this.model.findByIdAndUpdate(id, update)
+            const updatedcart = await this.model.findByIdAndUpdate(id, update, {new:true})
             return updatedcart
         }
         catch(error){ logger.error(error) }

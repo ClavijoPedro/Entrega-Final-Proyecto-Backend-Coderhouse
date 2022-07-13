@@ -67,9 +67,9 @@ app.use('/', userRouter);
 app.use('/api/productos', productsRouter);
 app.use('/api/productos', adminRouter);
 app.use('/api/carrito',  cartRouter);
+app.use('/api/orden', ordersRouter)
+app.use('/api/chat', chatRouter)
 app.use('/info', serverInfoRouter);
-app.use('/orden', ordersRouter)
-app.use('/chat', chatRouter)
 
 
 //SOKETS

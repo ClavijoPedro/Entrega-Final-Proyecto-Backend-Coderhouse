@@ -1,25 +1,22 @@
 import logger from '../utils/logger.js';
-import sendMail from '../utils/sendMail.js';
-import sendTxtMessage from '../utils/sendTxtMessage.js';
-import config from '../config/config.js';
-import { cartDao, productsDao } from '../daos/daoFactory.js';
+// import { sendOrderMail} from '../utils/sendMail.js';
+import CartServices from '../services/CartServices.js';
+import OrderServices from '../services/OrderServices.js';
+import ProductsServices from '../services/ProductServices.js';
 
 
-const carrito = cartDao;
-const productos = productsDao;
-
-//VARIABLES ADMIN
-const ADMIN__EMAIL=config.ADMIN_EMAIL;
-const ADMIN__PHONE=config.ADMIN_PHONE;
-
+const cartServices = new CartServices();
+const prodServices = new ProductsServices();
+const orderServices = new OrderServices();
 
 //Crea un carrito y devuelve su id
-const createCart = async (req, res) => {    
+const createCart = async (req, res) => { 
+    const {email, address} = await req.user;   
     try{
-        const cartId = await carrito.create({productos:[]});
-        const user = await req.user 
-        user.cart_id = cartId //prueba
-        res.status(200).send({id:cartId});                    
+        const cartId = await cartServices.createCart({email, address, productos:[]});
+        // const user = await req.user 
+        // user.cart_id = cartId //prueba
+        res.status(200).json(cartId);                    
     }catch(err){ logger.error(err) };
 };
 
@@ -27,48 +24,12 @@ const createCart = async (req, res) => {
 //Envia orden de productos al admin
 const orderCartProudcts = async (req,res) => {
     const { cart_id } = req.params;
-    const {name, email, phone} = await req.user;
-
+    const user = await req.user;
     try{
-        const cart = await carrito.getById(cart_id);
-        const cartProducts = cart.productos;
-        if(cartProducts.length && req.user){
-            
-            //Envio email
-            const mailAdminOptions = {
-                from: 'Servidor Node.js',
-                to: ADMIN__EMAIL,
-                subject: `Nuevo pedido ${name} ${email}`, 
-                html: `
-                    <h3>Nuevo pedido:</h3>
-                    <br>
-                    <ul>
-                        ${cartProducts.map(p => `<li>Producto: ${p.name} - Código:${p.code}</li>`)}
-                    </ul>
-                `
-            };
-            const sendOrderToAdminEmail = await sendMail(mailAdminOptions);
-            
-            //Envio mensaje whatsapp al Admin
-            const wappAdminOptions = {
-                body: `Nuevo pedido de ${name} (${email})`,
-                from:config.TWILIO_WHTSP_TRIAL_NUMBER,
-                to:`whatsapp:${ADMIN__PHONE}`
-            }
-            const sendOrderToAdminWapp = await sendTxtMessage(wappAdminOptions)
-            
-            
-            //Envio mensaje whatsapp al cliente
-            const wappClientOptions = {
-                body: `${name} (${email}) tu pedido fue recibido y esta siendo procesado`,
-                from:config.TWILIO_WHTSP_TRIAL_NUMBER,
-                to:`whatsapp:${phone}`
-            }
-            const sendOrderToClientWapp = await sendTxtMessage(wappClientOptions)
-            
-            res.send('Orden enviada')
-        }
-
+        const cart = await cartServices.getCartById(cart_id);
+        const saveOrder = await orderServices.createOrder(user, cart.productos)
+        // await sendOrderMail(user.name, user.email, cartProducts);
+        return res.json({message:'Orden enviada', orden:saveOrder})
     }catch(err){logger.error(err)}
 };
 
@@ -77,8 +38,8 @@ const orderCartProudcts = async (req,res) => {
 const deleteCart = async (req, res) => {   
     const { cart_id } = req.params;
     try{
-        await carrito.deleteById(cart_id);
-        res.status(200).send('Carrito eliminado');
+        await cartServices.deleteCartById(cart_id);
+        res.status(200).json({message:'carrito eliminado', id:cart_id});
     }catch(err){ logger.error(err) };         
 };
 
@@ -87,8 +48,8 @@ const deleteCart = async (req, res) => {
 const getCartProducts = async (req, res) => {   
     const { cart_id } = req.params;
     try{
-        const cart = await carrito.getById(cart_id);
-        res.status(200).send(cart.productos);
+        const cart = await cartServices.getCartById(cart_id);
+        res.status(200).json(cart.productos);
     }catch(err){ logger.error(err) }; 
 };
 
@@ -97,13 +58,13 @@ const getCartProducts = async (req, res) => {
 const sendToCart = async (req, res) => {   
     const { cart_id, id } = req.params;         
     try{
-        const cart = await carrito.getById(cart_id); 
-        const product = await productos.getById(id);
+        const cart = await cartServices.getCartById(cart_id); 
+        const product = await prodServices.getProductById(id);
         const isInCart = cart.productos.some(p => p.id == id);
         if(!isInCart){
             cart.productos.push(product);
-            await carrito.updateById(cart_id,cart);
-            res.status(201).send('Producto agregado'); 
+            await cartServices.updateCartById(cart_id,cart);
+            res.status(201).json({message:'Producto agregado', id:id}); 
         }
     }catch(err){ logger.error(err) }; 
 };
@@ -113,11 +74,11 @@ const sendToCart = async (req, res) => {
 const removeFromCart = async (req, res) => { 
     const {cart_id, id} = req.params
     try{
-        const cart = await carrito.getById(cart_id);
+        const cart = await cartServices.getCartById(cart_id);
         const products = cart.productos.filter(itm => itm.id != id);  
         cart.productos = products;
-        await carrito.updateById(cart_id, cart);   
-        res.status(200).send('Producto eliminado')    
+        await cartServices.updateCartById(cart_id, cart);   
+        res.status(200).json({message:'Producto eliminado', id:id})    
     }catch(err){ logger.error(err) }  
 };
 

@@ -1,1 +1,38 @@
-[]
+[
+    {
+        "name": "prueba-services2",
+        "price": "150000",
+        "description": "notebook",
+        "stock": "15",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_715213-MLA31026802368_062019-O.webp",
+        "category": "pc",
+        "code": 1657695349272,
+        "qty": 1,
+        "id": 1,
+        "timestamp": "13/7/2022 03:55:49"
+    },
+    {
+        "name": "parlantes-service323",
+        "price": "8841321",
+        "description": "parlantes genius Gx sw-g2.1",
+        "stock": "98",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_715213-MLA31026802368_062019-O.webp",
+        "category": "pc",
+        "code": 1657697373097,
+        "qty": 1,
+        "id": "2",
+        "timestamp": "13/7/2022 04:30:18"
+    },
+    {
+        "name": "parlantes-service3sac23213",
+        "price": "8841321",
+        "description": "parlantes genius Gx sw-g2.1",
+        "stock": "98",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_715213-MLA31026802368_062019-O.webp",
+        "category": "pc",
+        "code": 1657697381909,
+        "qty": 1,
+        "id": 3,
+        "timestamp": "13/7/2022 04:36:44"
+    }
+]

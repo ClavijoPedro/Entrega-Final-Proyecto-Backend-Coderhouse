@@ -20,7 +20,6 @@ const getRegister = (req, res) => {
 const uploads = async (req,res) => {
     try{
         const user = await req.user;
-        
         if(user){
             res.redirect(`/uploads/${user.avatar}`)            
         }else{

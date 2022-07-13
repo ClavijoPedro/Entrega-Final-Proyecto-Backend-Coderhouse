@@ -4,7 +4,6 @@ import Dao from '../Dao.js';
 import logger from '../../utils/logger.js';
 
 
-
 class OrdersDaoMongoDB extends Dao {
     
     constructor(model, schema){
@@ -16,7 +15,7 @@ class OrdersDaoMongoDB extends Dao {
    
     async connectDB(connection){
         try{
-            await mongoose.connect(connection)
+            await mongoose.connect(connection,config.MONGO_OPTIONS)
         }catch(error){ logger.error(error)}
     };
  
@@ -48,9 +47,9 @@ class OrdersDaoMongoDB extends Dao {
     };
 
 
-    async create(prod){
+    async create(ordr){
         try{
-           const order = new this.model(prod); 
+           const order = new this.model(ordr); 
            return await order.save()
         }
         catch(error){ logger.error(error) }
@@ -59,7 +58,7 @@ class OrdersDaoMongoDB extends Dao {
 
     async updateById(id, update){
         try{
-            const updatedorder = await this.model.findByIdAndUpdate(id, update)
+            const updatedorder = await this.model.findByIdAndUpdate(id, update, {new:true})
             return updatedorder
         }
         catch(error){ logger.error(error) }

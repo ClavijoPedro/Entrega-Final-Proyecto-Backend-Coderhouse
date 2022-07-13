@@ -1,4 +1,5 @@
 import { promises as fs } from 'fs';
+import productDTO from '../../dtos/productDto.js';
 import logger from '../../utils/logger.js';
 import Dao from '../Dao.js';
 
@@ -58,20 +59,18 @@ class ProductDaoFile extends Dao {
         try{
             const productList = await this.getAll();
             const id = productList.length == 0 ? 1 : productList[productList.length - 1].id + 1;
-            const code = Date.now();
             const timestamp = new Date().toLocaleString();
-            const newProduct = {...prod, timestamp, id, code}
+            const newProduct = productDTO(prod, id, timestamp)
             const newProductList = [...productList, newProduct]
             await fs.writeFile(this.file, JSON.stringify(newProductList, null, 4));
-            logger.info('Product  guardado:\n', newProduct)
             return id
         }catch(err){
-            logger.error(`no se pudo guardar el item error: ${err}`);
+            logger.error(`no se pudo guardar producto, error: ${err}`);
         }
     };
 
 
-    async updateById(id, prodUpdate){
+    async updateById(id, update){
         try{
             const productList = await this.getAll();
             const index = productList.findIndex( itm => itm.id === Number(id));
@@ -79,12 +78,14 @@ class ProductDaoFile extends Dao {
                 throw new Error(`No se encuentra el producto`);
             }else{
                 const product = productList[index];
-                const newProduct = Object.assign({},product, prodUpdate);
+                const timestamp = new Date().toLocaleString()
+                const productUpdate = productDTO(update, Number(id), timestamp)
+                const newProduct = Object.assign({},product, productUpdate);
                 productList[index] = newProduct;
                 await fs.writeFile(this.file, JSON.stringify(productList, null, 4));
             }
         }catch(err){
-            logger.error(`No se pudo actualizar el item erro: ${err}`);
+            logger.error(`No se pudo actualizar el producto, error: ${err}`);
         } 
     };
 
@@ -95,7 +96,7 @@ class ProductDaoFile extends Dao {
             const newProductList = productList.filter(p => p.id !== Number(id));
             await fs.writeFile(this.file, JSON.stringify(newProductList, null, 4))
         }catch(err){
-            logger.error(`no se pudo eliminar el item error: ${err}`);
+            logger.error(`no se pudo eliminar el producto, error: ${err}`);
         }
     };
 
@@ -105,7 +106,7 @@ class ProductDaoFile extends Dao {
         try{
             await fs.writeFile(this.file, JSON.stringify(productList, null, 4));
         }catch(err){
-            logger.error(`no se pudo eliminar la lista de items error: ${err}`);
+            logger.error(`no se pudo eliminar la lista productos, error: ${err}`);
         }
     };
 };

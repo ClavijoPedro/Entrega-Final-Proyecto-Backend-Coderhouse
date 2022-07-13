@@ -1,19 +1,20 @@
 import logger from '../utils/logger.js';
-import { productsDao } from '../daos/daoFactory.js';
+import ProductsServices from '../services/ProductServices.js';
 
-// const productos = ProductosDaoMongoDB;
-const productos = productsDao;
+const prodServices = new ProductsServices();
 
-
-//lista todos los productos disponibles ó un producto por su id
 const getProducts = async (req, res) => {   
     const { id } = req.params;
     try{
-        // const {name, avatar, email} = await req.user
-        const product = await productos.getById(id); 
-        const prodList = await productos.getAll();
-        //paso plantilla y data a ejs             
-        res.status(200).json(id ? product : prodList); 
+        if(id){
+            const product = await prodServices.getProductById(id);
+            if(!product){
+                return res.status(400).json({error: 'Producto no encontrado'})
+            };
+            return res.status(200).json(product); 
+        };
+        const prodList = await prodServices.getAllProducts();           
+        res.status(200).json(prodList); 
     }catch(err){ logger.error(err) };
 };
 
@@ -21,7 +22,7 @@ const getProducts = async (req, res) => {
 const getProductsByCategory = async (req, res) => {
     const {category} = req.params;
     try {
-        const products = await productsDao.getByCategory(category)
+        const products = await prodServices.getProductByCategory(category)
         res.status(200).json(products)
     } catch (error) {
         logger.error(error)
@@ -29,14 +30,12 @@ const getProductsByCategory = async (req, res) => {
 };
 
 
-//incorporar productos al listado
+//incorporar prodServices al listado
 const saveProducts = async (req, res) => {   
-    const item = req.body;
+    const product = req.body;
     try{
-        if(Object.keys(item).length > 0){ 
-            const prodId = await productos.create(item);     
-            res.status(200).json(prodId);
-        }else{logger.warn('Objeto no valido ingresado')}; 
+        const prodId = await prodServices.createProduct(product);     
+        res.status(200).json(prodId); 
     }catch(err){ logger.error(err) };
 };
 
@@ -47,9 +46,9 @@ const UpdateProducts = async (req, res) => {
     const prod = req.body;     
     try{
         if(id && Object.keys(prod).length > 0){
-            await productos.updateById(id, prod);
-            res.status(201).send('Producto Actualizado');
-        }
+            const update = await prodServices.updateProductById(id, prod);
+            return res.status(201).json({message:'Producto Actualizado', product: update});
+        };
     }catch(err){ logger.error(err) }           
 };
 
@@ -59,8 +58,8 @@ const deleteProduct = async (req, res) => {
     const { id } = req.params;            
     try{
         if(id){
-            await productos.deleteById(id);
-            res.status(200).send('Producto eliminado');
+            const deleted = await prodServices.deleteProductById(id);
+            res.status(200).send({message:'Producto eliminado', product:deleted});
         };
     }catch(err){ logger.error(err) }
 };

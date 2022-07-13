@@ -16,7 +16,7 @@ class MessageDaoMongoDB extends Dao {
    
     async connectDB(connection){
         try{
-            await mongoose.connect(connection)
+            await mongoose.connect(connection, config.MONGO_OPTIONS)
         }catch(error){ logger.error(error)}
     };
  

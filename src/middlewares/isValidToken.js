@@ -11,7 +11,9 @@ export default function isValidToken (req, res, next){
     };
     
     try {
-        req.user = verifyAuthToken(token)
+        //solo verifico no le paso los datos del token al user, uso los de passport
+        const verifyTokenData = verifyAuthToken(token) 
+        // req.user = verifyAuthToken(token)
         next()
         
     } catch (error) {
