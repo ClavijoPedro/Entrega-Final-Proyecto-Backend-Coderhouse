@@ -51,6 +51,8 @@ passport.use('signup', new LocalStrategy({
                 password: hashedPassword,
                 avatar: req.file.filename || '',
             };
+            delete newUser.full_phone
+            console.log(newUser)
             const saveUser = await users.createUser(newUser)
             return done(null, newUser)
             

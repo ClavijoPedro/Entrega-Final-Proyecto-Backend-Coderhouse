@@ -38,7 +38,6 @@ class UserServices {
 
     async createUser(usr){
         try{
-           usr.timestamp = new Date().toLocaleString();
            UserServices.validateUser(usr, true); 
            const newUser = await this.usersDao.create(usr);
            if(newUser){

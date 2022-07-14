@@ -9,7 +9,7 @@ const UserSchema = new Schema({
     address:{type:String, required:true},
     phone:{type: String, required:true},
     avatar:{type: String},
-    timestamp:{type: String, required:true},
+    timestamp:{type:String, default: () => new Date().toLocaleString()}
 });
 
 export default UserSchema

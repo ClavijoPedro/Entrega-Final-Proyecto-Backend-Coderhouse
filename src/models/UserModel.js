@@ -7,8 +7,7 @@ class UserModel{
         this.email = user.email
         this.address = user.address;
         this.phone = user.phone;
-        this.avatar = user.avatar;
-        this.timestamp = timestamp; 
+        this.avatar = user.avatar; 
     }
 
     static validate(user, required){
@@ -19,7 +18,6 @@ class UserModel{
             address: required ? Joi.string().required() : Joi.string(),
             phone: required ? Joi.string().required() : Joi.string(),
             avatar: Joi.string(),
-            timestamp: required ? Joi.string().required() : Joi.string(),
         });
 
         const {error} = UserSchema.validate(user);

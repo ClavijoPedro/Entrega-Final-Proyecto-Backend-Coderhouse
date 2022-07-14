@@ -1,16 +1,29 @@
 import  dotenv from 'dotenv'
-// import path from 'path';
+import path from 'path';
+import MongoStore from 'connect-mongo';
 
-dotenv.config()
-
+// dotenv.config()
+dotenv.config({
+    path: path.resolve(process.cwd(), process.env.NODE_ENV +'.env')
+});
 //*==================================[NOTA]======================================*//
 
-//PARA FUNCIONALIDAD DE ENVIO DE MAILS Y WHTASAPP DESACTIVAR EVENTUALMENTE EL ANTIVIRUS
+/*
+PARA FUNCIONALIDAD DE ENVIO DE MAILS Y WHTASAPP DESACTIVAR EVENTUALMENTE EL ANTIVIRUS 
+EN ENTORNO LOCAL
+*/ 
 
 //*==================================[]======================================*//
 
 export default{
     EXPRESS_SESSION: {
+        store: MongoStore.create({ 
+            mongoUrl: process.env.MONGO_DB_URI,
+            mongoOptions:{ 
+                useNewUrlParser: true,
+                useUnifiedTopology: true
+            },
+        }),
         secret:process.env.PRIVATE__KEY,
         saveUninitialized: false,
         rolling:true,
@@ -21,10 +34,13 @@ export default{
     },
     NODE_ENV: process.env.NODE_ENV || 'development',
     DB_TYPE:process.env.DB__TYPE,
+    
     MONGO_URI: process.env.MONGO_DB_URI,
     MONGO_OPTIONS:{ useNewUrlParser: true, useUnifiedTopology: true },
+    
     PORT: process.env.PORT || 8080,
     HOST: process.env.HOST || "127.0.0.1",
+    
     PRIVATE_KEY: process.env.PRIVATE__KEY,
    
     ADMIN_AUTH_USER: process.env.ADMIN__AUTH_USER,
