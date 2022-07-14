@@ -51,7 +51,6 @@ passport.use('signup', new LocalStrategy({
                 password: hashedPassword,
                 avatar: req.file.filename || '',
             };
-            console.log(newUser)
             const saveUser = await users.createUser(newUser)
             return done(null, newUser)
             
@@ -62,22 +61,6 @@ passport.use('signup', new LocalStrategy({
 ));
 
 
-//JWT AUTH - USE JSONWEBTOKEN COMUN PARA GENERAR EL TOKEN EL RUTA LOGIN 
-//Y AHORA USO PASSPOR-JWT  PARA VERIFICAR SI ESTA BIEN EL TOKEN
-// passport.use(new JwtStrategy({
-//     secretOrKey: 'top_secret',
-//     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken()
-// }, async (token, done) => {
-//     try {
-//         // const user = await users.getById(token.user.id)
-//         return done(null, token.user)
-//     } catch (e) {
-//         done(error)
-//     }
-// }))
-
-
-//serialize
 passport.serializeUser((user, done) => {
     done(null, user.email);
 });
@@ -86,7 +69,5 @@ passport.deserializeUser((email, done) =>{
     const user = users.getUser({email});
     done(null, user)
 });
-
-
 
 export default passport

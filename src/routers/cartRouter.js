@@ -2,9 +2,6 @@ import { Router } from 'express';
 import cartController from '../controllers/cartController.js'
 import isAuth from '../middlewares/isAuth.js'
 
-
-
-//instancia router 
 const cartRouter = Router();
 
 
@@ -25,7 +22,7 @@ cartRouter.get('/:cart_id/productos', isAuth, cartController.getCartProducts);
 cartRouter.post('/:cart_id/productos/:id', isAuth, cartController.sendToCart);
 
 
- //Elimina un producto del carrito por su id de carrito y de producto
+ //Elimina un producto del carrito
 cartRouter.delete('/:cart_id/productos/:id', isAuth, cartController.removeFromCart);
  
 
