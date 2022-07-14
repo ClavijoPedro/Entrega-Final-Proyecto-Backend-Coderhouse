@@ -1,10 +1,8 @@
 import  dotenv from 'dotenv'
-import path from 'path';
+// import path from 'path';
 
-// dotenv.config()
-dotenv.config({
-    path: path.resolve(process.cwd(), process.env.NODE_ENV+'.env')
-});
+dotenv.config()
+
 //*==================================[NOTA]======================================*//
 
 //PARA FUNCIONALIDAD DE ENVIO DE MAILS Y WHTASAPP DESACTIVAR EVENTUALMENTE EL ANTIVIRUS
