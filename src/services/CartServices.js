@@ -1,4 +1,4 @@
-import { cartDao } from "../daos/daoFactory.js"
+import { cartDao } from "../persistence/daos/daoFactory.js"
 import CartModel from "../models/CartModel.js";
 import logger from "../utils/logger.js";
 

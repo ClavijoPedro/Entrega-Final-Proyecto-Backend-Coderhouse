@@ -1,4 +1,4 @@
-import { ordersDao } from "../daos/daoFactory.js";
+import { ordersDao } from "../persistence/daos/daoFactory.js";
 import OrderModel from "../models/OrderModel.js";
 import logger from "../utils/logger.js";
 import { sendOrderMail } from "../utils/sendMail.js";

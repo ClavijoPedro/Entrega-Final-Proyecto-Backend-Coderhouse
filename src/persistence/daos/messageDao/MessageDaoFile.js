@@ -1,6 +1,6 @@
 import { promises as fs } from 'fs';
+import logger from '../../../utils/logger.js';
 import messageDTO from '../../dtos/messageDto.js';
-import logger from '../../utils/logger.js';
 import Dao from '../Dao.js';
 
 

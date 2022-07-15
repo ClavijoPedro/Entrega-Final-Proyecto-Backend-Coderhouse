@@ -1,11 +1,12 @@
-import { ordersDao } from "../daos/daoFactory.js"
+import OrderServices from "../services/OrderServices.js";
 import logger from "../utils/logger.js";
 
+const orderServices = new OrderServices();
 
 const getOrders = async (req, res) => {
     const {email} = req.user;
     try {
-        const orders = await ordersDao.getAll({email});
+        const orders = await orderServices.getAllOrders({email});
         if(orders){
             return res.json(orders)
         }

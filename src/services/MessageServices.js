@@ -1,4 +1,4 @@
-import { messagesDao } from "../daos/daoFactory.js";
+import { messagesDao } from "../persistence/daos/daoFactory.js";
 import MessageModel from "../models/MessageModel.js";
 import logger from "../utils/logger.js";
 

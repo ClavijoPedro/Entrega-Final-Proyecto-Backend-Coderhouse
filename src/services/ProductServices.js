@@ -1,5 +1,5 @@
 import logger from '../utils/logger.js';
-import { productsDao } from '../daos/daoFactory.js';
+import { productsDao } from '../persistence/daos/daoFactory.js';
 import ProductModel from '../models/ProductModel.js';
 
 

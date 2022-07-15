@@ -9,8 +9,8 @@ dotenv.config({
 //*==================================[NOTA]======================================*//
 
 /*
-PARA FUNCIONALIDAD DE ENVIO DE MAILS Y WHTASAPP DESACTIVAR EVENTUALMENTE EL ANTIVIRUS 
-EN ENTORNO LOCAL
+ENTORNO LOCAL:
+PARA FUNCIONALIDAD DE ENVIO DE MAILS DESACTIVAR EVENTUALMENTE EL ANTIVIRUS 
 */ 
 
 //*==================================[]======================================*//
@@ -56,5 +56,5 @@ export default{
             user: process.env.EMAIL__ADMIN,
             pass: process.env.EMAIL__PASS
         }
-    }, 
+    },
 }

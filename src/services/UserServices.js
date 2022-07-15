@@ -1,4 +1,4 @@
-import { usersDao } from "../daos/daoFactory.js";
+import { usersDao } from "../persistence/daos/daoFactory.js";
 import UserModel from "../models/UserModel.js";
 import logger from "../utils/logger.js";
 import { sendSignupMail } from "../utils/sendMail.js";

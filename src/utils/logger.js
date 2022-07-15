@@ -6,7 +6,7 @@ const logger = winston.createLogger({
     format:format.combine(
         format.simple(),
         format.timestamp(),
-        format.printf( log => `[${log.level}] [${log.timestamp}] - ${log.message}`)
+        format.printf( log => `[${log.level}] [${log.timestamp}] - ${log.message} - ${log.stack}`)
     ),
     
     transports: [

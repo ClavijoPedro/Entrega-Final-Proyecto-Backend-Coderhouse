@@ -7,7 +7,7 @@ import isValidToken from '../middlewares/isValidToken.js';
 const productsRouter = Router();
 
 //lista productos ó producto por su id
-productsRouter.get('/:id?',isAuth, isValidToken, productsController.getProducts);
+productsRouter.get('/:id?', isAuth, isValidToken, productsController.getProducts);
 
 productsRouter.get('/categoria/:category', isAuth, isValidToken, productsController.getProductsByCategory);
 

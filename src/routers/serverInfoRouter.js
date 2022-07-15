@@ -4,6 +4,6 @@ import isAdmin from "../middlewares/isAdmin.js";
 
 const serverInfoRouter = new Router();
 
-serverInfoRouter.get('/', isAdmin, serverInfoController.getServerInfo);
+serverInfoRouter.get('/', serverInfoController.getServerInfo);
 
 export default serverInfoRouter;

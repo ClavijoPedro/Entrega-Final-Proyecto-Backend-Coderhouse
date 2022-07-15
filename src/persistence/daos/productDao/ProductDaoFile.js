@@ -1,6 +1,6 @@
 import { promises as fs } from 'fs';
 import productDTO from '../../dtos/productDto.js';
-import logger from '../../utils/logger.js';
+import logger from '../../../utils/logger.js';
 import Dao from '../Dao.js';
 
 
@@ -60,7 +60,7 @@ class ProductDaoFile extends Dao {
             const productList = await this.getAll();
             const id = productList.length == 0 ? 1 : productList[productList.length - 1].id + 1;
             const timestamp = new Date().toLocaleString();
-            const newProduct = productDTO(prod, id, timestamp)
+            const newProduct = productDTO (prod, id, timestamp)
             const newProductList = [...productList, newProduct]
             await fs.writeFile(this.file, JSON.stringify(newProductList, null, 4));
             return newProduct
