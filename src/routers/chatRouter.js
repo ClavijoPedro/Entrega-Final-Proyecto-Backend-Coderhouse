@@ -4,7 +4,7 @@ import isAuth from "../middlewares/isAuth.js";
 
 const chatRouter = new Router();
 
-chatRouter.get('/', isAuth, chatController.getChat);
+chatRouter.get('/', chatController.getChat);
 
 chatRouter.get('/:email', isAuth, chatController.getChatMessagesByEmail);
 

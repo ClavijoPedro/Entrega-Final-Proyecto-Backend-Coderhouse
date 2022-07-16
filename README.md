@@ -23,15 +23,18 @@ agregar código y no de modificar el existente.
 ## Persistencia
 Se utilizó MongDB Atlas como servicio de persistencia en la nube y como segunda opción persistencia en archvo mediante Filesystem. 
 
+##
 ## Autenticación
 Se implementó Passport-Local y Json Web Token en las rutas Login y Registro.
 
+##
 ## Tests 
 Se realizó test de carga mediante archivo con los siguientes parámetros: 
 
      artillery quick --count 50 -n 20 "http://localhost:5000/api/productos" > test_result-products-fork.txt
 
 
+##
 ## Motores de plantillas
 Se utlizó para las vistas requeridas los siguientes motores de plantillas:
 
@@ -39,9 +42,11 @@ Se utlizó para las vistas requeridas los siguientes motores de plantillas:
 - Ejs
 - Handlebars
 
+##
 ## Chat
 Se utlizó Soket.Io para transferencia de datos en tiempo real. 
 
+##
 ## Deploy
 
 **Click aqui:** https://coder-tech-ecommerce-final.herokuapp.com/ 
@@ -51,12 +56,12 @@ El proyecto cuenta solo con vistas de acceso para prueba de autenticacion y vist
 - **User:**
 
           /chat  
-          /register
 
 - **Info server (admin)**
 
           /info
 
+##
 ## Funcionalidad
 Se utilizó POSTMAN para el testeo de las rutas de usuario y administrador.
 
@@ -75,7 +80,7 @@ Se utilizó POSTMAN para el testeo de las rutas de usuario y administrador.
           /logout
 
 ##
-####Rutas Productos: 
+#### Rutas Productos: 
 
 - **GET** Listar Productos
 
@@ -162,6 +167,8 @@ Se utilizó POSTMAN para el testeo de las rutas de usuario y administrador.
 **Scripts ejecución**
 
      - npm run dev   --->  modo develpoment
-     - npm run prdo  --->  modo producción
+     - npm run prod  --->  modo producción
 
+##
+## Muestra
 

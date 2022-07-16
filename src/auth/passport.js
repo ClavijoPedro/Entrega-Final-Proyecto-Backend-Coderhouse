@@ -17,20 +17,20 @@ passport.use('login', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
 }, async (email, password, done) => {
-    try{      
-        let user = await users.getUser({email});
-        if (!user) {
-            logger.error(`Usuario ${email} no encontrado`);
-            return done(null, false, {message:'Usuario no encontrado'});
-        }
-        if(!isValidPassword(user, password)){
-            return done(null, false, {message:'Contraseña invalida'});
-        }
-        
-        return done(null, user);
-    }catch(error){logger.info(error)}
+        try{      
+            let user = await users.getUser({email});
+            if (!user) {
+                logger.error(`Usuario ${email} no encontrado`);
+                return done(null, false, {message:'Usuario no encontrado'});
+            }
+            if(!isValidPassword(user, password)){
+                return done(null, false, {message:'Contraseña invalida'});
+            }
+
+            return done(null, user);
+        }catch(error){logger.error(error)}
     }
-    ));
+));
     
     
 //Register
