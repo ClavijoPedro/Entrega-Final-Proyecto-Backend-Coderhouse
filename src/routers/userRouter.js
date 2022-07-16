@@ -21,8 +21,7 @@ userRouter.post('/register', upload, passport.authenticate('signup',{
 
 userRouter.get('/register', userController.getRegister)
 
-
-userRouter.get('/uploads', userController.uploads)
+userRouter.get('/uploads', userController.getUpload)
 
 userRouter.get('/logout', userController.logOut);
 

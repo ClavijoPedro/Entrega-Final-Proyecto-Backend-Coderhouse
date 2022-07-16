@@ -17,26 +17,25 @@ const getRegister = (req, res) => {
 };
 
 
-const uploads = async (req,res) => {
-    try{
-        const user = await req.user;
-        if(user){
-            res.redirect(`/uploads/${user.avatar}`)            
-        }else{
-            res.send('Imagen no disponible')
-        }
-    }catch(error){logger.error(error)}
-};
-
-
 const getToken = async (req, res) => {
     try {
         const user = await req.user;
         const token = createAuthToken({email:user.email, name: user.name})
         res.header("auth_token", token).json({
-            message:'Login Successfull',
+            message:'Login Successful',
             token
         })
+    } catch (error) {
+        logger.error(error)
+    }
+}
+const getUpload = async (req, res) => {
+    try {
+        const user = await req.user;
+        if(user){
+            return res.redirect(`/uploads/${user.avatar}`)
+        }
+        res.send({message:'Imagen no disponible', user:false})
     } catch (error) {
         logger.error(error)
     }
@@ -67,6 +66,7 @@ export default {
     getLogin,
     getRegister,
     uploads,
+    getUpload,
     logOut,
     signupError,
     loginError,

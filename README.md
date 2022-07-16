@@ -43,4 +43,125 @@ Se utlizó para las vistas requeridas los siguientes motores de plantillas:
 Se utlizó Soket.Io para transferencia de datos en tiempo real. 
 
 ## Deploy
- **Click aqui:** https://coder-tech-ecommerce-final.herokuapp.com/ 
+
+**Click aqui:** https://coder-tech-ecommerce-final.herokuapp.com/ 
+
+##
+El proyecto cuenta solo con vistas de acceso para prueba de autenticacion y vista de info del servidor:
+- **User:**
+
+          /chat  
+          /register
+
+- **Info server (admin)**
+
+          /info
+
+## Funcionalidad
+Se utilizó POSTMAN para el testeo de las rutas de usuario y administrador.
+
+#### Rutas Autenticación:
+
+- **GET** Log-in usuario
+     
+          /login
+
+- **GET** Registro usuario
+     
+          /register
+
+- **GET** Log-out 
+
+          /logout
+
+##
+####Rutas Productos: 
+
+- **GET** Listar Productos
+
+          /api/productos
+
+- **GET** Listar un producto por su id
+     
+          /api/productos/:id
+
+- **GET** Listar productos por su categoria
+
+          api/productos/categoria/:category
+
+
+##
+#### Rutas Carrito: 
+
+- **POST** Crear un carrito
+     
+          /api/carrito 
+
+- **DELETE** Elimina carrito por su id
+     
+          /api/carrito/:cart_id 
+
+- **GET** Listar productos por id de carrito
+     
+          /api/carrito/:cart_id/productos 
+
+- **DELETE** Eliminar producto en carrito por su id    
+     
+          /api/carrito/:cart_id/productos/:id 
+
+- **POST** Enviar orden de compra por id de carrito
+
+          /api/carrito/:cart_id/orden 
+
+##
+#### Rutas ordenes de compra:
+
+- **GET** Listar ordenes de compra usuario
+     
+          /api/orden 
+     
+##
+#### Rutas Chat:
+
+- **GET** Chat usario & admin
+
+          /api/chat
+
+- **GET** Listar mensajes por email de usuario
+
+          /api/chat/:email
+
+##
+#### Rutas ADMIN:
+
+- **POST** Agregar un producto a DB
+
+          /api/productos/
+
+- **PUT** Actuaizar un prodcuto por su id
+
+          /api/productos/:id
+
+- **DELETE** Eliminar un producto por su id
+     
+          /api/productos/:id
+
+- **GET** Mostrar Info Servidor
+
+          /info
+
+##
+## Ejecución
+
+**Instalación**
+
+     - git clone https://github.com/ClavijoPedro/Entrega-Final-Proyecto-Backend-Coderhouse.git
+     - npm install
+
+
+**Scripts ejecución**
+
+     - npm run dev   --->  modo develpoment
+     - npm run prdo  --->  modo producción
+
+

@@ -32,7 +32,6 @@ class MessageDaoFile extends Dao {
             const id = messageList.length == 0 ? 1 : messageList[messageList.length - 1].id + 1;
             const timestamp = new Date().toLocaleString();
             const newMessage = messageDTO(msg, id, timestamp);
-            console.log(newMessage)
             const newMessageList = [...messageList, newMessage]
             await fs.writeFile(this.file, JSON.stringify(newMessageList, null, 4));
             return id

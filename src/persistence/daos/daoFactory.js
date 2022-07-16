@@ -22,7 +22,7 @@ let usersDao;
 let messagesDao;
 let ordersDao;
 
-console.log('esto es switch', config.DB_TYPE)
+console.log('DB type', config.DB_TYPE)
 switch(config.DB_TYPE){
     case 'filedb':
         productsDao = new ProductDaoFile('products')

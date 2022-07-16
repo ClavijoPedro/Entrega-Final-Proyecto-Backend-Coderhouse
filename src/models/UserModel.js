@@ -1,7 +1,7 @@
 import Joi from 'joi';
 
 class UserModel{
-    constructor(user, timestamp = new Date().toLocaleString()){
+    constructor(user){
         this.name = user.name;
         this.password = user.password;
         this.email = user.email
@@ -17,7 +17,7 @@ class UserModel{
             email: required ? Joi.string().required() : Joi.string(),
             address: required ? Joi.string().required() : Joi.string(),
             phone: required ? Joi.string().required() : Joi.string(),
-            avatar: Joi.string(),
+            avatar: Joi.string().allow(''),
         });
 
         const {error} = UserSchema.validate(user);

@@ -9,7 +9,7 @@ const cartRouter = Router();
 cartRouter.post('/', isAuth, cartController.createCart);
 
 //Envia la orden de pedido
-cartRouter.post('/:cart_id/order', isAuth, cartController.orderCartProudcts);
+cartRouter.post('/:cart_id/orden', isAuth, cartController.orderCartProudcts);
 
 //Vacía un carrito y lo elimina
 cartRouter.delete('/:cart_id', isAuth, cartController.deleteCart);

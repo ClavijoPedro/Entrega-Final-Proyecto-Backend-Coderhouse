@@ -5,6 +5,7 @@ import logger from "../utils/logger.js";
 import {hashPassword, isValidPassword} from '../utils/encryptPassword.js'
 import {sendSignupMail} from '../utils/sendMail.js';
 import UserServices from '../services/UserServices.js';
+import validatePhoneNumber from '../utils/validatePhoneNum.js';
 
 
 //users DB
@@ -47,12 +48,11 @@ passport.use('signup', new LocalStrategy({
             const hashedPassword = hashPassword(password);
             const newUser = {
                 ...req.body,
-                phone:req.body.full_phone || req.body.phone,
+                phone:req.body.full_phone || validatePhoneNumber(req.body.phone),
                 password: hashedPassword,
-                avatar: req.file.filename || '',
+                avatar: req.file?.filename || '',
             };
             delete newUser.full_phone
-            console.log(newUser)
             const saveUser = await users.createUser(newUser)
             return done(null, newUser)
             
