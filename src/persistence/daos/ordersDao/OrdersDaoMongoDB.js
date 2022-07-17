@@ -31,7 +31,7 @@ class OrdersDaoMongoDB extends Dao {
 
     async getAll(filter){
         try{
-            const orders = await this.model.find({filter})
+            const orders = await this.model.find(filter)
             return orders;
         }
         catch(error){ logger.error(error) }

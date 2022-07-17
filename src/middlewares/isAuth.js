@@ -1,6 +1,6 @@
 export default function isAuth(req,res,next){
     if(!req.isAuthenticated()){
-        res.redirect('/login')
+        return res.status(401).json({message:'Usuario no autenticado', user:null})
     }
     next()
 };

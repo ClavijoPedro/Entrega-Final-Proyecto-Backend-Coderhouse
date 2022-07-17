@@ -49,7 +49,7 @@ Se utlizó Soket.Io para transferencia de datos en tiempo real.
 ##
 ## Deploy
 
-**Click aqui:** https://coder-tech-ecommerce-final.herokuapp.com/ 
+**Click** [aquí](https://coder-tech-ecommerce-final.herokuapp.com/).
 
 ##
 El proyecto cuenta solo con vistas de acceso para prueba de autenticacion y vista de info del servidor:
@@ -171,5 +171,23 @@ Se utilizó POSTMAN para el testeo de las rutas de usuario y administrador.
      - npm run prod  --->  modo producción
 
 ##
-## Muestra
+## Muestras
 
+**Vista previa sesión usuario**
+
+![Vista-previa-sesión-usuario](https://github.com/ClavijoPedro/Entrega-Final-Proyecto-Backend-Coderhouse/tree/main/public/assets/example-gifs/ecommerce-user-session.gif)
+
+##
+**Vista previa  usuario (productos)**
+
+![Vista-previa-usuario-productos](https://github.com/ClavijoPedro/Entrega-Final-Proyecto-Backend-Coderhouse/tree/main/public/assets/example-gifs/ecommerce-user-session-products.gif)
+
+##
+**Vista previa usuario (carrito)**
+
+![Vista-previa-usuario-carrito](https://github.com/ClavijoPedro/Entrega-Final-Proyecto-Backend-Coderhouse/tree/main/public/assets/example-gifs/ecommerce-user-session-cart.gif)
+
+##
+**Vista previa sesión administrador**
+
+![Vista-previa-sesión-administrador](https://github.com/ClavijoPedro/Entrega-Final-Proyecto-Backend-Coderhouse/tree/main/public/assets/example-gifs/ecommerce-user-session-admin.gif)
