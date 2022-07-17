@@ -10,14 +10,14 @@ class CartDaoMongoDB extends Dao {
         super();
         this.model = mongoose.model(model, schema);
         this.connectDB(config.MONGO_URI);  
-    }
+    };
 
    
     async connectDB(connection){
         try{
             await mongoose.connect(connection, config.MONGO_OPTIONS)
         }catch(error){ logger.error(error)}
-    }
+    };
  
 
     async disconnect(){    
@@ -26,7 +26,7 @@ class CartDaoMongoDB extends Dao {
             .then(() => {
                 logger.info('MongoDB disconnected', mongoose.connection.readyState)})
         }catch(err){ logger.error(err)}
-    }
+    };
 
 
     async getAll(){
@@ -35,7 +35,7 @@ class CartDaoMongoDB extends Dao {
             return carts;
         }
         catch(error){ logger.error(error) }
-    }
+    };
 
 
     async getById(id){
@@ -44,15 +44,7 @@ class CartDaoMongoDB extends Dao {
             return cart;
         }
         catch(error){ logger.error(error) }
-    }
-
-    async getOne(crt){
-        try{
-            const cart = await this.model.findOne(crt);
-            return cart;
-        }
-        catch(error){ logger.error(error) }
-    }
+    };
 
 
     async create(crt){
@@ -62,7 +54,7 @@ class CartDaoMongoDB extends Dao {
            return createdCart.id
         }
         catch(error){ logger.error(error) }
-    }
+    };
 
 
     async updateById(id, update){
@@ -71,8 +63,21 @@ class CartDaoMongoDB extends Dao {
             return updatedcart
         }
         catch(error){ logger.error(error) }
-    }
+    };
 
+  
+  
+    async updateOne(cart_id, prod_id, value){
+        try {
+            const updatedProdInCart = await this.model.findOneAndUpdate(
+                {_id:cart_id, 'productos._id':prod_id},
+                {$inc:{'productos.$.qty': value}},
+            );
+            return updatedProdInCart
+            
+        } catch (error) { logger.error(error) }
+    };
+    
 
     async deleteById(id){
         try{
@@ -80,7 +85,7 @@ class CartDaoMongoDB extends Dao {
             return deletedCart 
         }
         catch(error){ logger.error(error) }
-    }
+    };
 
     
     async deleteAll(){
@@ -89,7 +94,7 @@ class CartDaoMongoDB extends Dao {
             return deleted 
         }
         catch(error){ logger.error(error) }
-    }
+    };
 }
 
 

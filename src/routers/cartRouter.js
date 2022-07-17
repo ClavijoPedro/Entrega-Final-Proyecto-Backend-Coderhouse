@@ -23,7 +23,7 @@ cartRouter.post('/:cart_id/productos/:id', isAuth, cartController.sendToCart);
 
 
  //Elimina un producto del carrito
-cartRouter.delete('/:cart_id/productos/:id', isAuth, cartController.removeFromCart);
+cartRouter.delete('/:cart_id/productos/:id', isAuth, cartController.removeProductFromCart);
  
 
 export default cartRouter

@@ -34,8 +34,11 @@ const getProductsByCategory = async (req, res) => {
 const saveProducts = async (req, res) => {   
     const productData = req.body;
     try{
-        const product = await prodServices.createProduct(productData);     
-        res.status(200).json({message:'Producto Creado', product}); 
+        const product = await prodServices.createProduct(productData); 
+        if(product){
+            return res.status(200).json({message:'Producto Creado', product}); 
+        }    
+        res.status(400).json({message:'Error: producto con formato inválido', product:productData}); 
     }catch(err){ logger.error(err) };
 };
 
@@ -43,12 +46,14 @@ const saveProducts = async (req, res) => {
 //Actualiza un producto por su id 
 const UpdateProducts = async (req, res) => {   
     const { id } = req.params;
-    const prod = req.body;     
+    const prodUpdate = req.body;     
     try{
-        if(id && Object.keys(prod).length > 0){
-            const update = await prodServices.updateProductById(id, prod);
+        const update = await prodServices.updateProductById(id, prodUpdate);
+        if(update){
             return res.status(201).json({message:'Producto Actualizado', product: update});
-        };
+        }
+        res.status(400).json({message:'Error: el producto no se actualizó', product_Update:prodUpdate}); 
+
     }catch(err){ logger.error(err) }           
 };
 
@@ -59,7 +64,7 @@ const deleteProduct = async (req, res) => {
     try{
         if(id){
             const deleted = await prodServices.deleteProductById(id);
-            res.status(200).send({message:'Producto eliminado', product:deleted});
+            res.status(200).send({message:'Producto eliminado', deleted_product:deleted});
         };
     }catch(err){ logger.error(err) }
 };

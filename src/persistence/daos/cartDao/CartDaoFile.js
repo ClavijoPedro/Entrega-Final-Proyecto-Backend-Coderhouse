@@ -80,6 +80,28 @@ class CartDaoFile extends Dao {
     };
 
 
+    async updateOne(cart_id, prod_id, value){
+        try {
+            const cartList = await this.getAll();
+            const index = cartList.findIndex( c => c.id === Number(cart_id));
+            if(index < 0){
+                throw new Error(`No se encuentra el carrito`);
+            }else{
+                const cart = cartList[index];
+                const product = cart.productos.find(p => p.id == prod_id)
+                product.qty = value == -1 ? product.qty - 1 : product.qty + 1
+                cart.productos.forEach(p => {
+                    if(p.id == prod_id){
+                        p.qty == product.qty
+                    }
+                }); 
+                await fs.writeFile(this.file, JSON.stringify(cartList, null, 4));
+                return product 
+            }
+        } catch (error) { logger.error(error) }
+    };
+
+
     async deleteById(id){
         try{
             const cartList = await this.getAll();

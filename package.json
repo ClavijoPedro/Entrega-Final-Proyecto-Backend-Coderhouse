@@ -10,7 +10,9 @@
     "dev": "set NODE_ENV=development&& node src/server.js",
     "dev-nmon": "set NODE_ENV=development&& nodemon src/server.js",
     "prod": "set NODE_ENV=production&& node src/server.js",
-    "prod-fever": "set NODE_ENV=production&& forever -w src/server.js"
+    "prod-fever": "set NODE_ENV=production&& forever -w src/server.js",
+    "prodn": "set NODE_ENV=production&& nodemon src/server.js"
+
   },
   "keywords": [],
   "author": "pedro clavijo",

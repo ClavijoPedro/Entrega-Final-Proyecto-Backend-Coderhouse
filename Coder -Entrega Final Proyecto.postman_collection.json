@@ -1,0 +1,2351 @@
+{
+	"info": {
+		"_postman_id": "53f30e02-d8af-426d-a969-9851992f0478",
+		"name": "Coder -Entrega Final Proyecto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21825353"
+	},
+	"item": [
+		{
+			"name": "RUTAS FILEDB",
+			"item": [
+				{
+					"name": "carrito",
+					"item": [
+						{
+							"name": "crear carrito",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "auth_header",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluIiwibmFtZSI6ImFkbWluIiwiaWF0IjoxNjU3NzM1MzU0fQ.Zo7OqzWuKo_1ku_ddsUXTM2eTBlKn1jJQSP66-ObVKU",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/carrito/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"carrito",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "listar productos carrito",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "auth_header",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/carrito/6238aa03483e5f8b1136c763/productos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"carrito",
+										"6238aa03483e5f8b1136c763",
+										"productos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "eliminar carrito",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "auth_header",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/carrito/SaogDXO8iZSqp2iGKgxP",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"carrito",
+										"SaogDXO8iZSqp2iGKgxP"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "agregar productos al carrito",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "auth_header",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluIiwibmFtZSI6ImFkbWluIiwiaWF0IjoxNjU3NzM1Nzg0fQ.nrhoEXEsPwvMYc6UAcq_9NqzSTxt-VC3KNLtO-zO1LM",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/carrito/6283e2c6c54c641f6bcfd12b/productos/6238dd8c00f6b82c611a0932",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"carrito",
+										"6283e2c6c54c641f6bcfd12b",
+										"productos",
+										"6238dd8c00f6b82c611a0932"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "eliminar producto del carrito",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "auth_header",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/carrito/SaogDXO8iZSqp2iGKgxP/productos/J4pFhjyrg6u4G7rvCgoR",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"carrito",
+										"SaogDXO8iZSqp2iGKgxP",
+										"productos",
+										"J4pFhjyrg6u4G7rvCgoR"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "enviar orden",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "auth_header",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluIiwibmFtZSI6ImFkbWluIiwiaWF0IjoxNjU3NzM1OTA4fQ.VUq7PspPYtBPZF5MUNXj9OcKyihDBTTkgxEi4i9gzFM",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/carrito/3/order",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"carrito",
+										"3",
+										"order"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "productos",
+					"item": [
+						{
+							"name": "agregar productos",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "auth_header",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluIiwibmFtZSI6ImFkbWluIiwiaWF0IjoxNjU3NzM1MTMxfQ.cYubrCV7DqsaqFKK4EQb83P5OoFo6vG6rKUaWj3bi-Y",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "parlantes",
+											"type": "default"
+										},
+										{
+											"key": "price",
+											"value": "13000",
+											"type": "default"
+										},
+										{
+											"key": "description",
+											"value": "parlantes genius Gx sw-g2.1",
+											"type": "default"
+										},
+										{
+											"key": "stock",
+											"value": "20",
+											"type": "default"
+										},
+										{
+											"key": "image",
+											"value": "https://http2.mlstatic.com/D_NQ_NP_715213-MLA31026802368_062019-O.webp",
+											"type": "default"
+										},
+										{
+											"key": "category",
+											"value": "perifericos",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/productos/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"productos",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "actualizar productos",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluIiwibmFtZSI6ImFkbWluIiwiaWF0IjoxNjU3NzM0Mzk2fQ.7F4SXSCV8wfDmIYfow7XvB4H79qq4WLvmfiC5pgsLq4",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "parlantes-service",
+											"type": "default"
+										},
+										{
+											"key": "price",
+											"value": "13000",
+											"type": "default"
+										},
+										{
+											"key": "description",
+											"value": "parlantes genius Gx sw-g2.1",
+											"type": "default"
+										},
+										{
+											"key": "stock",
+											"value": "20",
+											"type": "default"
+										},
+										{
+											"key": "image",
+											"value": "https://http2.mlstatic.com/D_NQ_NP_715213-MLA31026802368_062019-O.webp",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/productos/62cdfafbe1efdad85a3b47e5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"productos",
+										"62cdfafbe1efdad85a3b47e5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar productos",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNkNGN4NTRjejZAZ21haWwuY29tZCIsIm5hbWUiOiJwZXBlIiwiaWF0IjoxNjU3NzM0MzI3fQ.EJEcc0x2G1Y0GY-1ADPX5FuGwXlldYSFuzoA-MF1j90",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/productos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"productos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "eliminar producto",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/productos/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"productos",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar categoria",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluIiwibmFtZSI6ImFkbWluIiwiaWF0IjoxNjU3NzM0Mzk2fQ.7F4SXSCV8wfDmIYfow7XvB4H79qq4WLvmfiC5pgsLq4",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/productos/categoria/pc",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"productos",
+										"categoria",
+										"pc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "user",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "admin@admin",
+											"type": "default"
+										},
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Register",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "pepe",
+											"type": "default"
+										},
+										{
+											"key": "password",
+											"value": "3",
+											"type": "default"
+										},
+										{
+											"key": "email",
+											"value": "123@gmail.com",
+											"type": "default"
+										},
+										{
+											"key": "age",
+											"value": "30",
+											"type": "default"
+										},
+										{
+											"key": "address",
+											"value": "maipu 100",
+											"type": "default"
+										},
+										{
+											"key": "phone",
+											"value": "1561222224",
+											"type": "default"
+										},
+										{
+											"key": "avatar",
+											"type": "file",
+											"src": "/D:/CODERHOUSE/arte/banners/banner.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "uploads",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/uploads/1653284888744-avatar-admin-session.png",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"uploads",
+										"1653284888744-avatar-admin-session.png"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/logout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ordenes",
+					"item": [
+						{
+							"name": "listar ordenes",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "RUTAS MONGODB production",
+			"item": [
+				{
+					"name": "carrito",
+					"item": [
+						{
+							"name": "crear carrito",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluIiwibmFtZSI6ImFkbWluIiwiaWF0IjoxNjU3NzQzOTczfQ.pKvbR41MA0EzA93VXLxFGIlMgfg70R96CXG3GWadgN4",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/carrito",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"carrito"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "listar productos carrito",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluIiwibmFtZSI6ImFkbWluIiwiaWF0IjoxNjU3NzUwMzI3fQ.Ng_Od2UWlX9yykPIqPG_zGTqYDUSAa5k9Y62K_7ULEY",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5000/api/carrito/62cf2a71a6ddc21b275c2147/productos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"carrito",
+										"62cf2a71a6ddc21b275c2147",
+										"productos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "eliminar carrito",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5000/api/carrito/62cd00eb392da6716afbb93e",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"carrito",
+										"62cd00eb392da6716afbb93e"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "agregar productos al carrito",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluIiwibmFtZSI6ImFkbWluIiwiaWF0IjoxNjU3NzUwMzI3fQ.Ng_Od2UWlX9yykPIqPG_zGTqYDUSAa5k9Y62K_7ULEY",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/carrito/62cf4a50bc55afc3fd5e4d9c/productos/62c6053b18ed7faca0a3e4cb",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"carrito",
+										"62cf4a50bc55afc3fd5e4d9c",
+										"productos",
+										"62c6053b18ed7faca0a3e4cb"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "eliminar producto del carrito",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/carrito/62cf2a71a6ddc21b275c2147/productos/62cdc5c35baa2da45ffed6a1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"carrito",
+										"62cf2a71a6ddc21b275c2147",
+										"productos",
+										"62cdc5c35baa2da45ffed6a1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "enviar orden",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5000/api/carrito/62cf4a50bc55afc3fd5e4d9c/order",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"carrito",
+										"62cf4a50bc55afc3fd5e4d9c",
+										"order"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "productos",
+					"item": [
+						{
+							"name": "agregar productos",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "auth_header",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluMkBhZG1pbiIsIm5hbWUiOiJhZG1pbiIsImlhdCI6MTY1Nzc1MjAxMX0.nkoChwhULFLBTdz-EupIN3X7q8PcC8jwwDjVY3QNywg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "auriculares-33333",
+											"type": "default"
+										},
+										{
+											"key": "price",
+											"value": "150000",
+											"type": "default"
+										},
+										{
+											"key": "description",
+											"value": "notebook",
+											"type": "default"
+										},
+										{
+											"key": "stock",
+											"value": "15",
+											"type": "default"
+										},
+										{
+											"key": "image",
+											"value": "https://http2.mlstatic.com/D_NQ_NP_715213-MLA31026802368_062019-O.webp",
+											"type": "default"
+										},
+										{
+											"key": "category",
+											"value": "pc",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/productos/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"productos",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "actualizar productos",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluIiwibmFtZSI6ImFkbWluIiwiaWF0IjoxNjU3NzU2NzQ2fQ.VbxLUNQAYv3Uw_eSoKZGT8akgS418Aznu5SS55TbWEs",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "auriculares gamer actualizado",
+											"type": "default"
+										},
+										{
+											"key": "price",
+											"value": "10000",
+											"type": "default"
+										},
+										{
+											"key": "description",
+											"value": "parlantes genius Gx sw-g2.1",
+											"type": "default"
+										},
+										{
+											"key": "stock",
+											"value": "98",
+											"type": "default"
+										},
+										{
+											"key": "image",
+											"value": "https://http2.mlstatic.com/D_NQ_NP_715213-MLA31026802368_062019-O.webp",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/productos/62cf28266dacc1c030cb1f68",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"productos",
+										"62cf28266dacc1c030cb1f68"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar productos",
+							"request": {
+								"auth": {
+									"type": "bearer"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluIiwibmFtZSI6ImFkbWluIiwiaWF0IjoxNjU3NzU3NDE2fQ.4AeAxDTOMxB1n9ZRns-GR-V_Mtbb_mqby5fjLOMwask",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5000/api/productos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"productos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "eliminar producto",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5000/api/productos/62cf289c6dacc1c030cb1f6f",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"productos",
+										"62cf289c6dacc1c030cb1f6f"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar categoria",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "user",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "admin@admin",
+											"type": "default"
+										},
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Register",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "admin",
+											"type": "default"
+										},
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "default"
+										},
+										{
+											"key": "email",
+											"value": "admin@admin",
+											"type": "default"
+										},
+										{
+											"key": "address",
+											"value": "admin",
+											"type": "default"
+										},
+										{
+											"key": "phone",
+											"value": "1111111111",
+											"type": "default"
+										},
+										{
+											"key": "avatar",
+											"type": "file",
+											"src": "/D:/CODERHOUSE/Backend/3Entregas proyecto/Entrega-Proyecto-Final/public/assets/admin-session.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "uploads",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://localhost:3000/uploads/1653284888744-avatar-admin-session.png",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"uploads",
+										"1653284888744-avatar-admin-session.png"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/logout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ordenes",
+					"item": [
+						{
+							"name": "Listar ordenes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/api/orden",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"orden"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Server Info",
+					"item": [
+						{
+							"name": "Server info",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/info",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"info"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "RUTAS MONGODB development",
+			"item": [
+				{
+					"name": "carrito",
+					"item": [
+						{
+							"name": "crear carrito",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluIiwibmFtZSI6ImFkbWluIiwiaWF0IjoxNjU3NzQzOTczfQ.pKvbR41MA0EzA93VXLxFGIlMgfg70R96CXG3GWadgN4",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/carrito",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"carrito"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "listar productos carrito",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluIiwibmFtZSI6ImFkbWluIiwiaWF0IjoxNjU3NzUwMzI3fQ.Ng_Od2UWlX9yykPIqPG_zGTqYDUSAa5k9Y62K_7ULEY",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/carrito/62cf2a71a6ddc21b275c2147/productos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"carrito",
+										"62cf2a71a6ddc21b275c2147",
+										"productos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "eliminar carrito",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/carrito/62cd00eb392da6716afbb93e",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"carrito",
+										"62cd00eb392da6716afbb93e"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "agregar productos al carrito",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluIiwibmFtZSI6ImFkbWluIiwiaWF0IjoxNjU3NzUwMzI3fQ.Ng_Od2UWlX9yykPIqPG_zGTqYDUSAa5k9Y62K_7ULEY",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/carrito/62cf4a50bc55afc3fd5e4d9c/productos/62c6053b18ed7faca0a3e4cb",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"carrito",
+										"62cf4a50bc55afc3fd5e4d9c",
+										"productos",
+										"62c6053b18ed7faca0a3e4cb"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "eliminar producto del carrito",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/carrito/62cf2a71a6ddc21b275c2147/productos/62cdc5c35baa2da45ffed6a1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"carrito",
+										"62cf2a71a6ddc21b275c2147",
+										"productos",
+										"62cdc5c35baa2da45ffed6a1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "enviar orden",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/carrito/62cf4a50bc55afc3fd5e4d9c/order",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"carrito",
+										"62cf4a50bc55afc3fd5e4d9c",
+										"order"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "productos",
+					"item": [
+						{
+							"name": "agregar productos",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "auth_header",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluMkBhZG1pbiIsIm5hbWUiOiJhZG1pbiIsImlhdCI6MTY1Nzc1MjAxMX0.nkoChwhULFLBTdz-EupIN3X7q8PcC8jwwDjVY3QNywg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "auriculares-33333",
+											"type": "default"
+										},
+										{
+											"key": "price",
+											"value": "150000",
+											"type": "default"
+										},
+										{
+											"key": "description",
+											"value": "notebook",
+											"type": "default"
+										},
+										{
+											"key": "stock",
+											"value": "15",
+											"type": "default"
+										},
+										{
+											"key": "image",
+											"value": "https://http2.mlstatic.com/D_NQ_NP_715213-MLA31026802368_062019-O.webp",
+											"type": "default"
+										},
+										{
+											"key": "category",
+											"value": "pc",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/productos/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"productos",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "actualizar productos",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluIiwibmFtZSI6ImFkbWluIiwiaWF0IjoxNjU3NzU2NzQ2fQ.VbxLUNQAYv3Uw_eSoKZGT8akgS418Aznu5SS55TbWEs",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "auriculares gamer actualizado",
+											"type": "default"
+										},
+										{
+											"key": "price",
+											"value": "10000",
+											"type": "default"
+										},
+										{
+											"key": "description",
+											"value": "parlantes genius Gx sw-g2.1",
+											"type": "default"
+										},
+										{
+											"key": "stock",
+											"value": "98",
+											"type": "default"
+										},
+										{
+											"key": "image",
+											"value": "https://http2.mlstatic.com/D_NQ_NP_715213-MLA31026802368_062019-O.webp",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/productos/62cf28266dacc1c030cb1f68",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"productos",
+										"62cf28266dacc1c030cb1f68"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar productos",
+							"request": {
+								"auth": {
+									"type": "bearer"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluIiwibmFtZSI6ImFkbWluIiwiaWF0IjoxNjU3NzU3NDE2fQ.4AeAxDTOMxB1n9ZRns-GR-V_Mtbb_mqby5fjLOMwask",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/productos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"productos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "eliminar producto",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/productos/62cf289c6dacc1c030cb1f6f",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"productos",
+										"62cf289c6dacc1c030cb1f6f"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar categoria",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/productos/categoria/pc",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"productos",
+										"categoria",
+										"pc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "user",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "admin@admin",
+											"type": "default"
+										},
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Register",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "admin",
+											"type": "default"
+										},
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "default"
+										},
+										{
+											"key": "email",
+											"value": "admin@admin",
+											"type": "default"
+										},
+										{
+											"key": "address",
+											"value": "admin",
+											"type": "default"
+										},
+										{
+											"key": "phone",
+											"value": "1111111111",
+											"type": "default"
+										},
+										{
+											"key": "avatar",
+											"type": "file",
+											"src": "/D:/CODERHOUSE/Backend/3Entregas proyecto/Entrega-Proyecto-Final/public/assets/admin-session.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "uploads",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://localhost:3000/uploads/1653284888744-avatar-admin-session.png",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"uploads",
+										"1653284888744-avatar-admin-session.png"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/logout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ordenes",
+					"item": [
+						{
+							"name": "Listar ordenes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/orden",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"orden"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Server Info",
+					"item": [
+						{
+							"name": "Server info",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/info",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"info"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "RUTAS CLOUD",
+			"item": [
+				{
+					"name": "carrito",
+					"item": [
+						{
+							"name": "crear carrito",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluIiwibmFtZSI6ImFkbWluIiwiaWF0IjoxNjU3NzQzOTczfQ.pKvbR41MA0EzA93VXLxFGIlMgfg70R96CXG3GWadgN4",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://coder-tech-ecommerce-final.herokuapp.com/api/carrito",
+									"protocol": "https",
+									"host": [
+										"coder-tech-ecommerce-final",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"carrito"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "listar productos carrito",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluIiwibmFtZSI6ImFkbWluIiwiaWF0IjoxNjU3NzUwMzI3fQ.Ng_Od2UWlX9yykPIqPG_zGTqYDUSAa5k9Y62K_7ULEY",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://coder-tech-ecommerce-final.herokuapp.com/api/carrito/62cf2a71a6ddc21b275c2147/productos",
+									"protocol": "https",
+									"host": [
+										"coder-tech-ecommerce-final",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"carrito",
+										"62cf2a71a6ddc21b275c2147",
+										"productos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "eliminar carrito",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://coder-tech-ecommerce-final.herokuapp.com/api/carrito/62cd00eb392da6716afbb93e",
+									"protocol": "https",
+									"host": [
+										"coder-tech-ecommerce-final",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"carrito",
+										"62cd00eb392da6716afbb93e"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "agregar productos al carrito",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluIiwibmFtZSI6ImFkbWluIiwiaWF0IjoxNjU3NzUwMzI3fQ.Ng_Od2UWlX9yykPIqPG_zGTqYDUSAa5k9Y62K_7ULEY",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://coder-tech-ecommerce-final.herokuapp.com/api/carrito/62cf4a50bc55afc3fd5e4d9c/productos/62c6053b18ed7faca0a3e4cb",
+									"protocol": "https",
+									"host": [
+										"coder-tech-ecommerce-final",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"carrito",
+										"62cf4a50bc55afc3fd5e4d9c",
+										"productos",
+										"62c6053b18ed7faca0a3e4cb"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "eliminar producto del carrito",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://coder-tech-ecommerce-final.herokuapp.com/api/carrito/62cf2a71a6ddc21b275c2147/productos/62cdc5c35baa2da45ffed6a1",
+									"protocol": "https",
+									"host": [
+										"coder-tech-ecommerce-final",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"carrito",
+										"62cf2a71a6ddc21b275c2147",
+										"productos",
+										"62cdc5c35baa2da45ffed6a1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "enviar orden",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://coder-tech-ecommerce-final.herokuapp.com/api/carrito/62cf4a50bc55afc3fd5e4d9c/order",
+									"protocol": "https",
+									"host": [
+										"coder-tech-ecommerce-final",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"carrito",
+										"62cf4a50bc55afc3fd5e4d9c",
+										"order"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "productos",
+					"item": [
+						{
+							"name": "agregar productos",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "auth_header",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluMkBhZG1pbiIsIm5hbWUiOiJhZG1pbiIsImlhdCI6MTY1Nzc1MjAxMX0.nkoChwhULFLBTdz-EupIN3X7q8PcC8jwwDjVY3QNywg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "auriculares-33333",
+											"type": "default"
+										},
+										{
+											"key": "price",
+											"value": "150000",
+											"type": "default"
+										},
+										{
+											"key": "description",
+											"value": "notebook",
+											"type": "default"
+										},
+										{
+											"key": "stock",
+											"value": "15",
+											"type": "default"
+										},
+										{
+											"key": "image",
+											"value": "https://http2.mlstatic.com/D_NQ_NP_715213-MLA31026802368_062019-O.webp",
+											"type": "default"
+										},
+										{
+											"key": "category",
+											"value": "pc",
+											"type": "text"
+										},
+										{
+											"key": "auth_token",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://coder-tech-ecommerce-final.herokuapp.com/api/productos/",
+									"protocol": "https",
+									"host": [
+										"coder-tech-ecommerce-final",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"productos",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "actualizar productos",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "parlantes-service3sac23213",
+											"type": "default"
+										},
+										{
+											"key": "price",
+											"value": "8841321",
+											"type": "default"
+										},
+										{
+											"key": "description",
+											"value": "parlantes genius Gx sw-g2.1",
+											"type": "default"
+										},
+										{
+											"key": "stock",
+											"value": "98",
+											"type": "default"
+										},
+										{
+											"key": "image",
+											"value": "https://http2.mlstatic.com/D_NQ_NP_715213-MLA31026802368_062019-O.webp",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://coder-tech-ecommerce-final.herokuapp.com/api/productos/62cf28266dacc1c030cb1f68",
+									"protocol": "https",
+									"host": [
+										"coder-tech-ecommerce-final",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"productos",
+										"62cf28266dacc1c030cb1f68"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar productos",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "auth_token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluIiwibmFtZSI6ImFkbWluIiwiaWF0IjoxNjU3NzcyNTA3fQ.iUyhl9ZGgDE4kOycUkNT1jQTyvW0pCX67YjL-KEwOFM",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://coder-tech-ecommerce-final.herokuapp.com/api/productos",
+									"protocol": "https",
+									"host": [
+										"coder-tech-ecommerce-final",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"productos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "eliminar producto",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://coder-tech-ecommerce-final.herokuapp.com/6238ebd1b46d9ac54a12bb45",
+									"protocol": "https",
+									"host": [
+										"coder-tech-ecommerce-final",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"6238ebd1b46d9ac54a12bb45"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar categoria",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://coder-tech-ecommerce-final.herokuapp.com/api/productos/categoria/pc",
+									"protocol": "https",
+									"host": [
+										"coder-tech-ecommerce-final",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"productos",
+										"categoria",
+										"pc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "user",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "admin@admin",
+											"type": "default"
+										},
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://coder-tech-ecommerce-final.herokuapp.com/login",
+									"protocol": "https",
+									"host": [
+										"coder-tech-ecommerce-final",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Register",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "pepe",
+											"type": "default"
+										},
+										{
+											"key": "password",
+											"value": "3",
+											"type": "default"
+										},
+										{
+											"key": "email",
+											"value": "123@gmail.com",
+											"type": "default"
+										},
+										{
+											"key": "age",
+											"value": "30",
+											"type": "default"
+										},
+										{
+											"key": "address",
+											"value": "maipu 100",
+											"type": "default"
+										},
+										{
+											"key": "phone",
+											"value": "1561222224",
+											"type": "default"
+										},
+										{
+											"key": "avatar",
+											"type": "file",
+											"src": "/D:/CODERHOUSE/arte/banners/banner.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://coder-tech-ecommerce-final.herokuapp.com/register",
+									"protocol": "https",
+									"host": [
+										"coder-tech-ecommerce-final",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "uploads",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "https://coder-tech-ecommerce-final.herokuapp.com/uploads/1653284888744-avatar-admin-session.png",
+									"protocol": "https",
+									"host": [
+										"coder-tech-ecommerce-final",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"uploads",
+										"1653284888744-avatar-admin-session.png"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://coder-tech-ecommerce-final.herokuapp.com/logout",
+									"protocol": "https",
+									"host": [
+										"coder-tech-ecommerce-final",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ordenes",
+					"item": [
+						{
+							"name": "listar ordenes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://coder-tech-ecommerce-final.herokuapp.com/api/orden",
+									"protocol": "https",
+									"host": [
+										"coder-tech-ecommerce-final",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"orden"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -34,14 +34,6 @@ class ProductsServices{
         catch(error){ logger.error(error) }
     };
 
-    async getProduct(prod){
-        try{
-            const product = await this.productsDao.getOne(prod);
-            return product;
-        }
-        catch(error){ logger.error(error) }
-    };
-
 
     async createProduct(prod){
         try{

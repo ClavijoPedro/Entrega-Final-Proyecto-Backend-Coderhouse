@@ -18,6 +18,7 @@ const getToken = async (req, res) => {
         logger.error(error)
     }
 }
+
 const getUpload = async (req, res) => {
     try {
         const user = await req.user;
@@ -29,7 +30,6 @@ const getUpload = async (req, res) => {
         logger.error(error)
     }
 }
-
 
 const logOut = async (req,res) => {
     try{

@@ -1,11 +1,9 @@
 import logger from '../utils/logger.js';
 import CartServices from '../services/CartServices.js';
 import OrderServices from '../services/OrderServices.js';
-import ProductsServices from '../services/ProductServices.js';
 
 
 const cartServices = new CartServices();
-const prodServices = new ProductsServices();
 const orderServices = new OrderServices();
 
 //Crea un carrito y devuelve su id
@@ -40,7 +38,7 @@ const deleteCart = async (req, res) => {
 };
 
 
-//lista productos guardados en el carrito 
+
 const getCartProducts = async (req, res) => {   
     const { cart_id } = req.params;
     try{
@@ -50,31 +48,21 @@ const getCartProducts = async (req, res) => {
 };
 
 
-//incorpora productos al carrito por su id
 const sendToCart = async (req, res) => {   
     const { cart_id, id } = req.params;         
     try{
-        const cart = await cartServices.getCartById(cart_id); 
-        const product = await prodServices.getProductById(id);
-        const isInCart = cart.productos.some(p => p.id == id);
-        if(!isInCart){
-            cart.productos.push(product);
-            await cartServices.updateCartById(cart_id,cart);
-            res.status(201).json({message:'Producto agregado', product}); 
-        }
+        const productInCart = await cartServices.saveProductInCart(cart_id, id);
+        res.status(201).json({message:'Producto agregado al carrito', product:productInCart}); 
     }catch(err){ logger.error(err) }; 
 };
 
 
- //Elimina un producto del carrito por su id de carrito y de producto
-const removeFromCart = async (req, res) => { 
+ //Elimina producto del carrito por id de carrito y  producto
+const removeProductFromCart = async (req, res) => { 
     const {cart_id, id} = req.params
     try{
-        const cart = await cartServices.getCartById(cart_id);
-        const products = cart.productos.filter(itm => itm.id != id);  
-        cart.productos = products;
-        await cartServices.updateCartById(cart_id, cart);   
-        res.status(200).json({message:'Producto eliminado', id})    
+        await cartServices.deleteProductFromCart(cart_id, id)
+        res.status(200).json({message:'Producto eliminado del carrito', id})    
     }catch(err){ logger.error(err) }  
 };
 
@@ -85,5 +73,5 @@ export default{
     getCartProducts,
     orderCartProudcts,
     sendToCart,
-    removeFromCart  
+    removeProductFromCart  
 }

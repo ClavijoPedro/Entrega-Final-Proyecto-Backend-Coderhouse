@@ -14,6 +14,7 @@ import MessageDaoFile from './messageDao/MessageDaoFile.js';
 import MessageDaoMongoDB from './messageDao/MessageDaoMongoDB.js';
 import OrdersDaoFile from './ordersDao/OrdersDaoFile.js';
 import OrdersDaoMongoDB from './ordersDao/OrdersDaoMongoDB.js';
+import logger from '../../utils/logger.js';
 
 
 let productsDao;
@@ -22,7 +23,7 @@ let usersDao;
 let messagesDao;
 let ordersDao;
 
-console.log('DB type', config.DB_TYPE)
+logger.info('DB type', config.DB_TYPE)
 switch(config.DB_TYPE){
     case 'filedb':
         productsDao = new ProductDaoFile('products')

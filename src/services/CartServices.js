@@ -1,12 +1,51 @@
-import { cartDao } from "../persistence/daos/daoFactory.js"
+import { cartDao, productsDao } from "../persistence/daos/daoFactory.js"
 import CartModel from "../models/CartModel.js";
 import logger from "../utils/logger.js";
 
 class CartServices{
     
     constructor(){
-        this.cartDao = cartDao;  
+        this.cartDao = cartDao;
+        this.productDao = productsDao;  
     };
+    
+    
+    async saveProductInCart(cart_id, prod_id){
+        try {
+            const cart = await this.cartDao.getById(cart_id); 
+            const product = await this.productDao.getById(prod_id);
+            const isInCart = cart.productos.some(p => p.id == prod_id);
+            if(!isInCart){
+                cart.productos.push(product);
+                await this.cartDao.updateById(cart_id, cart);
+                return product
+            }
+            this.updateProdQuantity(cart_id, prod_id, 1);
+            return product   
+        } catch (error) { logger.error(error) }
+    };
+    
+
+    async  updateProdQuantity(cart_id, prod_id, value){
+        try {
+            await this.cartDao.updateOne(cart_id, prod_id, value)
+        } catch (error) { logger.error(error) }
+    };
+
+
+    async deleteProductFromCart(cart_id, prod_id){
+        try {
+            const cart = await this.cartDao.getById(cart_id);
+            const product = cart.productos.find(p => p.id == prod_id);
+            if(product.qty == 1){
+                const products= cart.productos.filter(p => p.id != prod_id);  
+                cart.productos = products;
+                await cartDao.updateById(cart_id, cart);
+            }
+            this.updateProdQuantity(cart_id, prod_id, -1)
+        } catch (error) { logger.error(error)}
+    };
+
 
     async getAllCarts(){
         try{
@@ -20,14 +59,6 @@ class CartServices{
     async getCartById(id){
         try{
             const cart = await this.cartDao.getById(id);
-            return cart;
-        }
-        catch(error){ logger.error(error) }
-    };
-
-    async getCart(crt){
-        try{
-            const cart = await this.cartDao.getOne(crt);
             return cart;
         }
         catch(error){ logger.error(error) }
@@ -77,6 +108,7 @@ class CartServices{
             throw new Error(`El carrito posee un formato json invalido o faltan datos ${error.details[0].message}`);
         }
     };
+
 
 }
 

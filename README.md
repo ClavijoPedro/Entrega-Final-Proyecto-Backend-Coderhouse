@@ -64,6 +64,7 @@ El proyecto cuenta solo con vistas de acceso para prueba de autenticacion y vist
 ##
 ## Funcionalidad
 Se utilizó POSTMAN para el testeo de las rutas de usuario y administrador.
+(Export de rutas POSTMAN en directorio raíz - "Coder -Entrega Final Proyecto.postman_collection.json" )
 
 #### Rutas Autenticación:
 

@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import config from '../../../config/config.js'
 import Dao from '../Dao.js';
 import logger from '../../../utils/logger.js';
+import productDTO from '../../dtos/productDto.js';
 
 
 
@@ -56,14 +57,6 @@ class ProductDaoMongoDB extends Dao {
         catch(error){ logger.error(error) }
     };
 
-    async getOne(prod){
-        try{
-            const product = await this.model.findOne(prod);
-            return product;
-        }
-        catch(error){ logger.error(error) }
-    };
-
 
     async create(prod){
         try{
@@ -86,7 +79,7 @@ class ProductDaoMongoDB extends Dao {
     async deleteById(id){
         try{
             const deletedProduct = await this.model.findByIdAndDelete(id)
-            return deletedProduct 
+            return productDTO({}, id,null)  
         }
         catch(error){ logger.error(error) }
     };

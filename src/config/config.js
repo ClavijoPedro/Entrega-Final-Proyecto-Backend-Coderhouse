@@ -42,6 +42,7 @@ export default{
     HOST: process.env.HOST || "127.0.0.1",
     
     PRIVATE_KEY: process.env.PRIVATE__KEY,
+    SESSION_TIME: process.env.SESSION__TIME || 86400000,
    
     ADMIN_AUTH_USER: process.env.ADMIN__AUTH_USER,
     ADMIN_AUTH_PASS: process.env.ADMIN__AUTH_PASS,
