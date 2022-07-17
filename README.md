@@ -175,19 +175,20 @@ Se utilizó POSTMAN para el testeo de las rutas de usuario y administrador.
 
 **Vista previa sesión usuario**
 
-![Vista-previa-sesión-usuario](https://github.com/ClavijoPedro/Entrega-Final-Proyecto-Backend-Coderhouse/tree/main/public/assets/example-gifs/ecommerce-user-session.gif)
+![ecommerce-user-session](https://user-images.githubusercontent.com/87502452/179416336-b4295323-9591-4fe0-91b6-d8a8d883660a.gif)
 
 ##
 **Vista previa  usuario (productos)**
 
-![Vista-previa-usuario-productos](https://github.com/ClavijoPedro/Entrega-Final-Proyecto-Backend-Coderhouse/tree/main/public/assets/example-gifs/ecommerce-user-session-products.gif)
+![ecommerce-user-session-products](https://user-images.githubusercontent.com/87502452/179416363-f86452ab-4eee-4a95-9b92-8bbd2f52b43a.gif)
 
 ##
 **Vista previa usuario (carrito)**
 
-![Vista-previa-usuario-carrito](https://github.com/ClavijoPedro/Entrega-Final-Proyecto-Backend-Coderhouse/tree/main/public/assets/example-gifs/ecommerce-user-session-cart.gif)
+![ecommerce-user-session-cart](https://user-images.githubusercontent.com/87502452/179416368-c8274e1f-4cfd-4569-98b0-baafcd5f1de8.gif)
 
 ##
 **Vista previa sesión administrador**
 
-![Vista-previa-sesión-administrador](https://github.com/ClavijoPedro/Entrega-Final-Proyecto-Backend-Coderhouse/tree/main/public/assets/example-gifs/ecommerce-user-session-admin.gif)
+![ecommerce-user-session-admin](https://user-images.githubusercontent.com/87502452/179416376-bb6251ea-9a57-48de-b16a-41cfee731471.gif)
+
