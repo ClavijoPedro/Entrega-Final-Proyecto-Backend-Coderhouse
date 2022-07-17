@@ -192,3 +192,22 @@ Se utilizó POSTMAN para el testeo de las rutas de usuario y administrador.
 
 ![ecommerce-user-session-admin](https://user-images.githubusercontent.com/87502452/179416376-bb6251ea-9a57-48de-b16a-41cfee731471.gif)
 
+##
+**Vista previa Errores autenticación y rutas**
+
+![ecommerce-user-session-auth](https://user-images.githubusercontent.com/87502452/179420353-e0e4284d-316b-4ab8-9dd2-ab08e76b6d4d.gif)
+
+##
+
+![ecommerce-user-session-auth2](https://user-images.githubusercontent.com/87502452/179420374-3ef5d530-be02-415b-857a-119b1363b08d.gif)
+
+##
+
+![ecommerce-user-session-404](https://user-images.githubusercontent.com/87502452/179420425-595c81fe-f200-44b6-ae9c-c9528fc28790.gif)
+
+##
+**Vista previa chat usuario y administrador**
+
+![ecommerce-user-session-chat](https://user-images.githubusercontent.com/87502452/179420400-4c2393f9-2f8e-4835-87a2-e65642b279cf.gif)
+
+
